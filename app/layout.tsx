@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Footer, Header } from "./site-chrome";
+import { Footer, Header, RouteTransition } from "./site-chrome";
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Header />
-        <main>{children}</main>
+        <main><RouteTransition>{children}</RouteTransition></main>
         <Footer />
       </body>
     </html>

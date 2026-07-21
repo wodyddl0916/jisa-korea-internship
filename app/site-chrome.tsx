@@ -72,6 +72,11 @@ export function Header() {
   );
 }
 
+export function RouteTransition({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  return <div className="routeTransition" key={pathname}>{children}</div>;
+}
+
 export function Footer() {
   const pathname = usePathname();
   const isKo = pathname === "/ko" || pathname.startsWith("/ko/");

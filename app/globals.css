@@ -16,7 +16,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 body {
   margin: 0;
   color: var(--ink);
@@ -40,6 +40,11 @@ button, input, textarea, select { font: inherit; }
 img { display: block; max-width: 100%; }
 main { overflow: clip; }
 h1, h2, h3, h4, strong { font-weight: 700; }
+.routeTransition { animation: routeEnter .34s ease-out both; }
+@keyframes routeEnter {
+  from { opacity: .35; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .siteHeader { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); box-shadow: 0 5px 18px rgba(24,64,94,.07); backdrop-filter: blur(12px); }
 .headerInner { width: min(var(--wrap), calc(100% - 40px)); height: 78px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
@@ -384,4 +389,5 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition-duration: .01ms !important; }
+  .routeTransition { animation: none; }
 }
