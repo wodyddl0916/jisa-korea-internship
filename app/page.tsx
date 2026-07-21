@@ -1,29 +1,12 @@
 import Link from "next/link";
+import { HomeHero } from "./home-hero";
 import { LegalNote, SectionHeading } from "./site-chrome";
 import { stats } from "./site-data";
 
 export default function Home() {
   return (
     <>
-      <section className="homeHero">
-        <div className="heroInner">
-          <div className="heroCopy">
-            <p className="eyebrow">JISA KOREA INTERNSHIP</p>
-            <h1>「教育」を目的とした、安心・安全な日韓架け橋プログラム。</h1>
-            <p className="lead">韓国の優秀な学生と日本企業を結び、大学教育と実務経験が両立する適正なインターンシップを設計・支援します。</p>
-            <div className="heroActions">
-              <Link className="button buttonLight" href="/programs">3つのプログラムを見る <span>→</span></Link>
-              <Link className="button buttonGhost" href="/about">JISAについて</Link>
-            </div>
-          </div>
-          <aside className="heroPanel" aria-label="主要なご案内">
-            <p>QUICK ACCESS</p>
-            <Link className="heroRoute" href="/programs#course-a"><b>A</b><strong>大学主催・短期</strong><span>→</span></Link>
-            <Link className="heroRoute" href="/programs#course-b"><b>B</b><strong>HRD Korea連携</strong><span>→</span></Link>
-            <Link className="heroRoute" href="/programs#course-c"><b>C</b><strong>長期・有給実習</strong><span>→</span></Link>
-          </aside>
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="statBand" aria-label="JISAの実績">
         <div className="stats">
