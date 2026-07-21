@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import { useEffect } from "react";
 import { navigation } from "./site-data";
 
@@ -23,6 +23,7 @@ export function Header() {
   const isCurrent = (href: string) => href === "/" ? normalizedPath === "/" : normalizedPath.startsWith(href);
   const japaneseHref = normalizedPath || "/";
   const koreanHref = normalizedPath === "/" ? "/ko" : `/ko${normalizedPath}`;
+  const closeLanguageMenu = (event: MouseEvent<HTMLAnchorElement>) => event.currentTarget.closest("details")?.removeAttribute("open");
 
   useEffect(() => {
     document.documentElement.lang = isKo ? "ko" : "ja";
@@ -46,8 +47,8 @@ export function Header() {
           <details className="languageMenu">
             <summary>{isKo ? "언어" : "言語"}<span aria-hidden="true">⌄</span></summary>
             <div className="languageOptions">
-              <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined}>日本語</Link>
-              <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined}>한국어</Link>
+              <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeLanguageMenu}>日本語</Link>
+              <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeLanguageMenu}>한국어</Link>
             </div>
           </details>
         </nav>
@@ -61,8 +62,8 @@ export function Header() {
             <details className="languageMenu mobileLanguageMenu">
               <summary>{isKo ? "언어 선택" : "言語を選択"}<span aria-hidden="true">⌄</span></summary>
               <div className="languageOptions">
-                <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined}>日本語</Link>
-                <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined}>한국어</Link>
+                <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeLanguageMenu}>日本語</Link>
+                <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeLanguageMenu}>한국어</Link>
               </div>
             </details>
           </nav>
