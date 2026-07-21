@@ -285,7 +285,7 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 .legalNote p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
 
 .siteFooter { background: #163f60; color: white; }
-.footerLead { width: min(var(--wrap), calc(100% - 40px)); margin: auto; padding: 65px 0; display: flex; justify-content: space-between; align-items: end; gap: 30px; border-bottom: 1px solid rgba(255,255,255,.18); }
+.footerLead { width: min(var(--wrap), calc(100% - 40px)); margin: auto; padding: 65px 0; display: flex; justify-content: space-between; align-items: end; gap: 30px; border-bottom: 1px solid rgba(255,255,255,.34); }
 .footerLead h2 { margin: 0; font-size: clamp(25px, 3vw, 36px); line-height: 1.45; }
 
 .slideCopy h1,
@@ -308,6 +308,7 @@ h1, h2, h3, h4, strong { font-weight: 700; }
   line-break: strict;
 }
 .footerGrid { width: min(var(--wrap), calc(100% - 40px)); margin: auto; padding: 52px 0; display: grid; grid-template-columns: 1.1fr .8fr .8fr; gap: 60px; }
+.footerGrid > * + * { border-left: 1px solid rgba(255,255,255,.24); padding-left: 42px; }
 .footerBrand { display: grid; align-content: start; }
 .footerBrand strong { font-size: 34px; }
 .footerBrand span { color: var(--sky); font-size: 12px; font-weight: 700; }
@@ -317,7 +318,7 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 .footerGrid nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .footerContact { display: grid; grid-template-columns: 54px 1fr; align-content: start; gap: 10px; font-size: 13px; }
 .footerContact span { color: var(--sky); font-weight: 750; }
-.copyright { border-top: 1px solid rgba(255,255,255,.12); padding: 20px; text-align: center; color: #b8ccd8; font-size: 11px; }
+.copyright { border-top: 1px solid rgba(255,255,255,.26); padding: 20px; text-align: center; color: #b8ccd8; font-size: 11px; }
 
 @media (max-width: 1120px) {
   .desktopNav { display: none; }
@@ -385,6 +386,7 @@ h1, h2, h3, h4, strong { font-weight: 700; }
   .contactDetail { border-right: 0; border-bottom: 1px solid var(--line); }
   .footerLead { align-items: start; flex-direction: column; }
   .footerGrid { grid-template-columns: 1fr; gap: 34px; padding-bottom: 86px; }
+  .footerGrid > * + * { border-left: 0; border-top: 1px solid rgba(255,255,255,.24); padding: 30px 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
