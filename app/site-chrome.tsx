@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { CSSProperties } from "react";
 import { navigation } from "./site-data";
 
 export function Header() {
@@ -19,8 +20,8 @@ export function Header() {
           </span>
         </Link>
         <nav className="desktopNav" aria-label="メインメニュー">
-          {navigation.slice(1).map((item) => (
-            <Link href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>
+          {navigation.map((item) => (
+            <Link className={item.href === "/" ? "navHome" : undefined} href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>
           ))}
           <Link className="navContact" href="/contact">お問い合わせ</Link>
         </nav>
@@ -69,16 +70,22 @@ export function Footer() {
   );
 }
 
-export function PageHero({ label, title, intro, index }: { label: string; title: string; intro: string; index: string }) {
+export function PageHero({ label, title, intro, index, image = "" }: { label: string; title: string; intro: string; index: string; image?: string }) {
+  const style = { "--page-image": image ? `url(${image})` : "none" } as CSSProperties;
+
   return (
     <section className="pageHero">
       <div className="pageHeroInner">
-        <div>
+        <div className="pageHeroCopy">
           <p className="eyebrow">{label}</p>
           <h1>{title}</h1>
           <p className="pageLead">{intro}</p>
         </div>
-        <span className="pageIndex">{index}</span>
+        <div className={`pageHeroVisual ${image ? "hasImage" : ""}`} style={style} aria-label={`${label} イメージ掲載エリア`}>
+          <span className="visualLabel">JISA / {label}</span>
+          <strong className="pageIndex">{index}</strong>
+          <i aria-hidden="true" />
+        </div>
       </div>
     </section>
   );
