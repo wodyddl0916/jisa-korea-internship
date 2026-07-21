@@ -353,9 +353,10 @@ h1, h2, h3, h4, strong { font-weight: 700; }
   .sliderDots button { width: 18px; }
   .sliderDots button.isActive { width: 32px; }
   .slideCounter { margin-left: auto; }
-  .quickDock { left: 14px; bottom: 14px; width: calc(100vw - 28px); }
-  .quickDockPanel { width: 100%; bottom: 58px; }
-  .quickDockToggle { width: 164px; height: 44px; }
+  .quickDock { left: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: min(320px, calc(100vw - 24px)); }
+  .quickDockPanel { width: 100%; bottom: 52px; }
+  .quickDockToggle { width: 136px; height: 40px; padding: 0 12px; font-size: 10px; }
+  .quickDockToggle b { font-size: 19px; }
   .heroActions { display: grid; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat { min-height: 105px; padding: 18px; border-bottom: 1px solid var(--line); }
@@ -383,7 +384,7 @@ h1, h2, h3, h4, strong { font-weight: 700; }
   .videoGrid { grid-template-columns: 1fr; }
   .contactDetail { border-right: 0; border-bottom: 1px solid var(--line); }
   .footerLead { align-items: start; flex-direction: column; }
-  .footerGrid { grid-template-columns: 1fr; gap: 34px; }
+  .footerGrid { grid-template-columns: 1fr; gap: 34px; padding-bottom: 86px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
