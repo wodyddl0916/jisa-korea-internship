@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navigation } from "./site-data";
 
 export function Header() {
+  const pathname = usePathname();
+  const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
     <header className="siteHeader">
       <div className="headerInner">
@@ -14,7 +20,7 @@ export function Header() {
         </Link>
         <nav className="desktopNav" aria-label="メインメニュー">
           {navigation.slice(1).map((item) => (
-            <Link href={item.href} key={item.href}>{item.label}</Link>
+            <Link href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>
           ))}
           <Link className="navContact" href="/contact">お問い合わせ</Link>
         </nav>
@@ -22,7 +28,7 @@ export function Header() {
           <summary aria-label="メニューを開く"><span /><span /><span /></summary>
           <nav aria-label="モバイルメニュー">
             {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>{item.label}</Link>
+              <Link href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>
             ))}
             <Link href="/contact">お問い合わせ</Link>
           </nav>

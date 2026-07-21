@@ -46,9 +46,9 @@ export default function Home() {
         <div className="wrap">
           <SectionHeading label="FOR EACH PARTNER" title="立場ごとに必要な情報をご案内します。" text="大学、受入企業、参加希望者の三者に価値が生まれるプログラムを目指します。" />
           <div className="audienceGrid">
-            <article className="audienceCard"><span className="number">01</span><h3>大学・教育機関の方</h3><p>低コストで継続できる国際実習、単位認定、卒業生を含むキャリア支援をご案内します。</p><Link className="textLink" href="/partnership#universities">大学のメリット <span>→</span></Link></article>
-            <article className="audienceCard"><span className="number">02</span><h3>日本企業の方</h3><p>受入準備、学生とのマッチング、実習設計、在留資格、来日後管理まで支援します。</p><Link className="textLink" href="/partnership#companies">企業のメリット <span>→</span></Link></article>
-            <article className="audienceCard"><span className="number">03</span><h3>参加を希望する方</h3><p>大学主催の短期実習、政府支援型、長期有給実習から目的に合う制度を確認できます。</p><Link className="textLink" href="/programs">参加コースを確認 <span>→</span></Link></article>
+            <Link className="audienceCard interactiveCard" href="/partnership#universities"><span className="number">01</span><h3>大学・教育機関の方</h3><p>低コストで継続できる国際実習、単位認定、卒業生を含むキャリア支援をご案内します。</p><span className="cardAction">大学のメリット <b>→</b></span></Link>
+            <Link className="audienceCard interactiveCard" href="/partnership#companies"><span className="number">02</span><h3>日本企業の方</h3><p>受入準備、学生とのマッチング、実習設計、在留資格、来日後管理まで支援します。</p><span className="cardAction">企業のメリット <b>→</b></span></Link>
+            <Link className="audienceCard interactiveCard" href="/programs"><span className="number">03</span><h3>参加を希望する方</h3><p>大学主催の短期実習、政府支援型、長期有給実習から目的に合う制度を確認できます。</p><span className="cardAction">参加コースを確認 <b>→</b></span></Link>
           </div>
         </div>
       </section>
@@ -57,11 +57,11 @@ export default function Home() {
         <div className="wrap">
           <SectionHeading label="THREE PROGRAMS" title="目的と期間で選べる、3つの韓国特化型プログラム。" />
           <div className="programPreview">
-            <article className="programMini"><span className="courseLetter">A</span><h3>大学主催・短期</h3><p>夏季・冬季休暇を活用し、大学や事業団の教育目的に合わせて設計します。</p><div className="tagRow"><span className="tag">4〜8週間</span><span className="tag">大学主催</span></div></article>
-            <article className="programMini"><span className="courseLetter">B</span><h3>HRD Korea連携</h3><p>公的支援とワーキングホリデーを活用し、卒業生にも参加機会を広げます。</p><div className="tagRow"><span className="tag">2〜4か月</span><span className="tag">年3〜4回</span></div></article>
-            <article className="programMini"><span className="courseLetter">C</span><h3>長期・有給実習</h3><p>大学教育課程の一環として、専門分野に関連した実践的な実習を行います。</p><div className="tagRow"><span className="tag">3か月〜1年</span><span className="tag">11か国展開</span></div></article>
+            <Link className="programMini interactiveCard" href="/programs#course-a"><span className="courseLetter">A</span><h3>大学主催・短期</h3><p>夏季・冬季休暇を活用し、大学や事業団の教育目的に合わせて設計します。</p><div className="tagRow"><span className="tag">4〜8週間</span><span className="tag">大学主催</span></div><span className="cardAction">詳しく見る <b>→</b></span></Link>
+            <Link className="programMini interactiveCard" href="/programs#course-b"><span className="courseLetter">B</span><h3>HRD Korea連携</h3><p>公的支援とワーキングホリデーを活用し、卒業生にも参加機会を広げます。</p><div className="tagRow"><span className="tag">2〜4か月</span><span className="tag">年3〜4回</span></div><span className="cardAction">詳しく見る <b>→</b></span></Link>
+            <Link className="programMini interactiveCard" href="/programs#course-c"><span className="courseLetter">C</span><h3>長期・有給実習</h3><p>大学教育課程の一環として、専門分野に関連した実践的な実習を行います。</p><div className="tagRow"><span className="tag">3か月〜1年</span><span className="tag">11か国展開</span></div><span className="cardAction">詳しく見る <b>→</b></span></Link>
           </div>
-          <div style={{marginTop: 28}}><Link className="button" href="/programs">コースを詳しく比較する <span>→</span></Link></div>
+          <div className="sectionAction"><Link className="button" href="/programs">コースを詳しく比較する <span>→</span></Link></div>
           <LegalNote />
         </div>
       </section>
