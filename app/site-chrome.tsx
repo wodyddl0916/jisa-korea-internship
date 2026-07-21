@@ -21,7 +21,8 @@ export function Header() {
   const localize = (href: string) => isKo ? (href === "/" ? "/ko" : `/ko${href}`) : href;
   const normalizedPath = isKo ? (pathname.replace(/^\/ko/, "") || "/") : pathname;
   const isCurrent = (href: string) => href === "/" ? normalizedPath === "/" : normalizedPath.startsWith(href);
-  const switchHref = isKo ? (normalizedPath || "/") : (pathname === "/" ? "/ko" : `/ko${pathname}`);
+  const japaneseHref = normalizedPath || "/";
+  const koreanHref = normalizedPath === "/" ? "/ko" : `/ko${normalizedPath}`;
 
   useEffect(() => {
     document.documentElement.lang = isKo ? "ko" : "ja";
@@ -42,7 +43,13 @@ export function Header() {
             <Link className={item.href === "/" ? "navHome" : undefined} href={localize(item.href)} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{isKo ? koreanNavigation[item.href] : item.label}</Link>
           ))}
           <Link className="navContact" href={localize("/contact")}>{isKo ? "문의" : "お問い合わせ"}</Link>
-          <Link className="languageSwitch" href={switchHref} lang={isKo ? "ja" : "ko"}>{isKo ? "日本語" : "한국어"}</Link>
+          <details className="languageMenu">
+            <summary>{isKo ? "언어" : "言語"}<span aria-hidden="true">⌄</span></summary>
+            <div className="languageOptions">
+              <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined}>日本語</Link>
+              <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined}>한국어</Link>
+            </div>
+          </details>
         </nav>
         <details className="mobileNav">
           <summary aria-label="メニューを開く"><span /><span /><span /></summary>
@@ -51,7 +58,13 @@ export function Header() {
               <Link href={localize(item.href)} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{isKo ? koreanNavigation[item.href] : item.label}</Link>
             ))}
             <Link href={localize("/contact")}>{isKo ? "문의" : "お問い合わせ"}</Link>
-            <Link className="languageSwitch" href={switchHref} lang={isKo ? "ja" : "ko"}>{isKo ? "日本語" : "한국어"}</Link>
+            <details className="languageMenu mobileLanguageMenu">
+              <summary>{isKo ? "언어 선택" : "言語を選択"}<span aria-hidden="true">⌄</span></summary>
+              <div className="languageOptions">
+                <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined}>日本語</Link>
+                <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined}>한국어</Link>
+              </div>
+            </details>
           </nav>
         </details>
       </div>
