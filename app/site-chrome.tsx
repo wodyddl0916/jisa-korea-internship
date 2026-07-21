@@ -72,6 +72,14 @@ export function Footer() {
 
 export function PageHero({ label, title, intro, index, image = "" }: { label: string; title: string; intro: string; index: string; image?: string }) {
   const style = { "--page-image": image ? `url(${image})` : "none" } as CSSProperties;
+  const suggestions: Record<string, string> = {
+    "ABOUT JISA": "協会スタッフ・大学関係者との打合せ風景",
+    "PROGRAMS": "学生の実習・企業訪問・研修風景",
+    "PUBLIC PARTNERSHIP": "HRD Korea・大学との協約・説明会",
+    "RESULTS & RESOURCES": "参加学生・大学交流・成果発表の様子",
+    "VISION 2026–2027": "日韓の学生と企業をつなぐ活動風景",
+    "CONTACT": "JISAオフィス・相談対応の様子",
+  };
 
   return (
     <section className="pageHero">
@@ -83,6 +91,7 @@ export function PageHero({ label, title, intro, index, image = "" }: { label: st
         </div>
         <div className={`pageHeroVisual ${image ? "hasImage" : ""}`} style={style} aria-label={`${label} イメージ掲載エリア`}>
           <span className="visualLabel">JISA / {label}</span>
+          {!image && <span className="visualSuggestion"><small>掲載予定写真</small>{suggestions[label] ?? "JISAの活動が伝わる写真"}</span>}
           <strong className="pageIndex">{index}</strong>
           <i aria-hidden="true" />
         </div>
