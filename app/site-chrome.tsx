@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { CSSProperties, MouseEvent } from "react";
-import { useEffect } from "react";
+import type { CSSProperties } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { navigation } from "./site-data";
+import { pageImages } from "./site-images";
 
 const koreanNavigation: Record<string, string> = {
   "/": "홈",
@@ -23,14 +24,17 @@ export function Header() {
   const isCurrent = (href: string) => href === "/" ? normalizedPath === "/" : normalizedPath.startsWith(href);
   const japaneseHref = normalizedPath || "/";
   const koreanHref = normalizedPath === "/" ? "/ko" : `/ko${normalizedPath}`;
-  const closeLanguageMenu = (event: MouseEvent<HTMLAnchorElement>) => event.currentTarget.closest("details")?.removeAttribute("open");
+  const headerRef = useRef<HTMLElement>(null);
+  const closeMenus = useCallback(() => {
+    headerRef.current?.querySelectorAll("details[open]").forEach((menu) => menu.removeAttribute("open"));
+  }, []);
 
-  useEffect(() => {
-    document.documentElement.lang = isKo ? "ko" : "ja";
-  }, [isKo]);
+  // The header sits outside RouteTransition, so it never remounts on navigation.
+  // Close every open disclosure menu when the route changes, including via back/forward.
+  useEffect(closeMenus, [pathname, closeMenus]);
 
   return (
-    <header className="siteHeader">
+    <header className="siteHeader" ref={headerRef}>
       <div className="headerInner">
         <Link className="brand" href={isKo ? "/ko" : "/"} aria-label={isKo ? "JISA 한일 인턴십 홈" : "JISA韓国インターンシップ ホーム"}>
           <img src="/assets/jisa-logo.png" alt="JISA" />
@@ -47,8 +51,8 @@ export function Header() {
           <details className="languageMenu">
             <summary>{isKo ? "언어" : "言語"}<span aria-hidden="true">⌄</span></summary>
             <div className="languageOptions">
-              <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeLanguageMenu}>日本語</Link>
-              <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeLanguageMenu}>한국어</Link>
+              <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeMenus}>日本語</Link>
+              <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeMenus}>한국어</Link>
             </div>
           </details>
         </nav>
@@ -56,14 +60,14 @@ export function Header() {
           <summary aria-label="メニューを開く"><span /><span /><span /></summary>
           <nav aria-label="モバイルメニュー">
             {navigation.map((item) => (
-              <Link href={localize(item.href)} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{isKo ? koreanNavigation[item.href] : item.label}</Link>
+              <Link href={localize(item.href)} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} onClick={closeMenus}>{isKo ? koreanNavigation[item.href] : item.label}</Link>
             ))}
-            <Link href={localize("/contact")}>{isKo ? "문의" : "お問い合わせ"}</Link>
+            <Link href={localize("/contact")} onClick={closeMenus}>{isKo ? "문의" : "お問い合わせ"}</Link>
             <details className="languageMenu mobileLanguageMenu">
               <summary>{isKo ? "언어 선택" : "言語を選択"}<span aria-hidden="true">⌄</span></summary>
               <div className="languageOptions">
-                <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeLanguageMenu}>日本語</Link>
-                <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeLanguageMenu}>한국어</Link>
+                <Link href={japaneseHref} lang="ja" aria-current={!isKo ? "page" : undefined} onClick={closeMenus}>日本語</Link>
+                <Link href={koreanHref} lang="ko" aria-current={isKo ? "page" : undefined} onClick={closeMenus}>한국어</Link>
               </div>
             </details>
           </nav>
@@ -116,7 +120,16 @@ export function Footer() {
 export function PageHero({ label, title, intro, index, image = "" }: { label: string; title: string; intro: string; index: string; image?: string }) {
   const pathname = usePathname();
   const isKo = pathname === "/ko" || pathname.startsWith("/ko/");
-  const style = { "--page-image": image ? `url(${image})` : "none" } as CSSProperties;
+  // An explicit `image` prop overrides the shared map; `focus` only comes from the map.
+  const mapped = pageImages[label];
+  const src = image || mapped?.src;
+  const style = {
+    "--page-image": src ? `url(${src})` : "none",
+    "--page-focus": (image ? undefined : mapped?.focus) ?? "center",
+  } as CSSProperties;
+  const visualClass = ["pageHeroVisual", src && "hasImage", mapped?.tone === "light" && "onLight"]
+    .filter(Boolean)
+    .join(" ");
   const suggestions: Record<string, string> = {
     "ABOUT JISA": "協会スタッフ・大学関係者との打合せ風景",
     "PROGRAMS": "学生の実習・企業訪問・研修風景",
@@ -142,9 +155,9 @@ export function PageHero({ label, title, intro, index, image = "" }: { label: st
           <h1>{title}</h1>
           <p className="pageLead">{intro}</p>
         </div>
-        <div className={`pageHeroVisual ${image ? "hasImage" : ""}`} style={style} aria-label={`${label} イメージ掲載エリア`}>
+        <div className={visualClass} style={style} aria-label={`${label} イメージ掲載エリア`}>
           <span className="visualLabel">JISA / {label}</span>
-          {!image && <span className="visualSuggestion"><small>{isKo ? "추천 사진" : "掲載予定写真"}</small>{isKo ? (koreanSuggestions[label] ?? "JISA의 활동을 보여주는 사진") : (suggestions[label] ?? "JISAの活動が伝わる写真")}</span>}
+          {!src && <span className="visualSuggestion"><small>{isKo ? "추천 사진" : "掲載予定写真"}</small>{isKo ? (koreanSuggestions[label] ?? "JISA의 활동을 보여주는 사진") : (suggestions[label] ?? "JISAの活動が伝わる写真")}</span>}
           <strong className="pageIndex">{index}</strong>
           <i aria-hidden="true" />
         </div>

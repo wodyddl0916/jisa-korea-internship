@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
+import { slideImages } from "./site-images";
 
 const slides = [
   {
@@ -12,7 +13,6 @@ const slides = [
     href: "/about",
     action: "JISAについて知る",
     className: "slideAbout",
-    image: "",
   },
   {
     label: "THREE PROGRAMS",
@@ -21,7 +21,6 @@ const slides = [
     href: "/programs",
     action: "プログラムを見る",
     className: "slidePrograms",
-    image: "",
   },
   {
     label: "PUBLIC PARTNERSHIP",
@@ -30,7 +29,6 @@ const slides = [
     href: "/partnership",
     action: "連携モデルを見る",
     className: "slidePartnership",
-    image: "",
   },
   {
     label: "RESULTS & RESOURCES",
@@ -39,7 +37,6 @@ const slides = [
     href: "/results",
     action: "実績・資料を見る",
     className: "slideResults",
-    image: "",
   },
   {
     label: "VISION 2026–2027",
@@ -48,16 +45,15 @@ const slides = [
     href: "/future",
     action: "今後の展開を見る",
     className: "slideFuture",
-    image: "",
   },
 ];
 
 const slidesKo = [
-  { label: "ABOUT JISA", title: "JISA는 교육과 실무를 함께 설계하는 지원 기관입니다.", text: "해외 대학과 일본 기업을 연결하고, 단순한 인재 소개가 아닌 정규 교육과정으로서의 인턴십을 지원합니다.", href: "/ko/about", action: "JISA 자세히 보기", className: "slideAbout", image: "" },
-  { label: "THREE PROGRAMS", title: "목적과 기간에 따라 선택하는 3가지 한국 특화 프로그램.", text: "대학 주관 단기형, HRD Korea 연계형, 장기 유급형 가운데 목적에 맞는 실습 과정을 확인할 수 있습니다.", href: "/ko/programs", action: "프로그램 보기", className: "slidePrograms", image: "" },
-  { label: "PUBLIC PARTNERSHIP", title: "공공 지원과 전문 설계를 하나의 운영 체계로 연결합니다.", text: "한국산업인력공단과의 협력을 바탕으로 대학·기업·참가자가 지속할 수 있는 국제 실습 모델을 구축합니다.", href: "/ko/partnership", action: "협력 모델 보기", className: "slidePartnership", image: "" },
-  { label: "RESULTS & RESOURCES", title: "숫자와 대학, 기록으로 확인하는 JISA의 활동.", text: "11개국, 70개 대학, 1,100명 이상의 실적과 한국 대학과의 교류·운영 기록을 소개합니다.", href: "/ko/results", action: "실적·자료 보기", className: "slideResults", image: "" },
-  { label: "VISION 2026–2027", title: "한국 내 기반을 강화해 배움부터 취업까지 지원합니다.", text: "현지 운영 체계와 대학·기업 네트워크, 일본 취업 희망자를 위한 커리큘럼 사업을 단계적으로 확대합니다.", href: "/ko/future", action: "향후 계획 보기", className: "slideFuture", image: "" },
+  { label: "ABOUT JISA", title: "JISA는 교육과 실무를 함께 설계하는 지원 기관입니다.", text: "해외 대학과 일본 기업을 연결하고, 단순한 인재 소개가 아닌 정규 교육과정으로서의 인턴십을 지원합니다.", href: "/ko/about", action: "JISA 자세히 보기", className: "slideAbout" },
+  { label: "THREE PROGRAMS", title: "목적과 기간에 따라 선택하는 3가지 한국 특화 프로그램.", text: "대학 주관 단기형, HRD Korea 연계형, 장기 유급형 가운데 목적에 맞는 실습 과정을 확인할 수 있습니다.", href: "/ko/programs", action: "프로그램 보기", className: "slidePrograms" },
+  { label: "PUBLIC PARTNERSHIP", title: "공공 지원과 전문 설계를 하나의 운영 체계로 연결합니다.", text: "한국산업인력공단과의 협력을 바탕으로 대학·기업·참가자가 지속할 수 있는 국제 실습 모델을 구축합니다.", href: "/ko/partnership", action: "협력 모델 보기", className: "slidePartnership" },
+  { label: "RESULTS & RESOURCES", title: "숫자와 대학, 기록으로 확인하는 JISA의 활동.", text: "11개국, 70개 대학, 1,100명 이상의 실적과 한국 대학과의 교류·운영 기록을 소개합니다.", href: "/ko/results", action: "실적·자료 보기", className: "slideResults" },
+  { label: "VISION 2026–2027", title: "한국 내 기반을 강화해 배움부터 취업까지 지원합니다.", text: "현지 운영 체계와 대학·기업 네트워크, 일본 취업 희망자를 위한 커리큘럼 사업을 단계적으로 확대합니다.", href: "/ko/future", action: "향후 계획 보기", className: "slideFuture" },
 ];
 
 const quickLinks = [
@@ -98,10 +94,13 @@ export function HomeHero({ locale = "ja" }: { locale?: "ja" | "ko" }) {
         onBlurCapture={() => setPaused(false)}
       >
         {localizedSlides.map((slide, index) => {
-          const style = { "--slide-image": slide.image ? `url(${slide.image})` : "none" } as CSSProperties;
+          const image = slideImages[slide.label];
+          const style = {
+            "--slide-image": image ? `url(${image.src})` : "none",
+            "--slide-focus": image?.focus ?? "center",
+          } as CSSProperties;
           return (
             <article className={`heroSlide ${slide.className} ${active === index ? "isActive" : ""}`} style={style} aria-hidden={active !== index} key={slide.label}>
-              <div className="slideShade" />
               <div className="slideInner">
                 <div className="slideCopy">
                   <p className="eyebrow">{slide.label}</p>
