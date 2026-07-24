@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import test from "node:test";
 
+import { networkFlags } from "../app/network-flags.ts";
 import { pageImages, sectionImages, slideImages } from "../app/site-images.ts";
 import { youTubeId } from "../app/youtube.ts";
 
@@ -86,6 +87,28 @@ test("every slot image resolves to a file in public/", async () => {
     // Nothing typechecks these strings against the filesystem, so a typo would
     // only show up as a silently blank slot in the browser.
     await access(new URL(`../public${image.src}`, import.meta.url));
+  }
+});
+
+test("ships the network flags in the served markup, marked decorative", async () => {
+  for (const route of ["/", "/ko", "/results", "/ko/results"]) {
+    const html = await renderHtml(route);
+
+    const sources = [...html.matchAll(/<img[^>]*\bclass="[^"]*\bflagChip\b[^"]*"[^>]*>/g)]
+      .map((tag) => /src="([^"]+)"/.exec(tag[0])?.[1]);
+    assert.equal(sources.length, networkFlags.length, `${route} should render every flag`);
+
+    for (const src of sources) {
+      // The panel only ever appears on hover, so a broken path would go unnoticed.
+      await access(new URL(`../public${src}`, import.meta.url));
+    }
+
+    // The country count is already stated in text beside it; the flags add nothing
+    // for assistive tech and would only be noise.
+    assert.match(html, /class="flagRow" aria-hidden="true"/, `${route} should hide the strip from AT`);
+    // Collapsed, not absent — the artwork has to be cached before the first click.
+    assert.match(html, /class="flagStrip" id="network-flags"/, `${route} should ship the strip collapsed`);
+    assert.match(html, /aria-expanded="false" aria-controls="network-flags"/, `${route} should expose the toggle`);
   }
 });
 

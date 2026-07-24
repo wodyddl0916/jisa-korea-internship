@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero, SectionHeading } from "../../site-chrome";
 import { briefingUniversities, pastUniversities, resources, stats, videos } from "../../site-data";
+import { StatBand } from "../../stat-band";
 
 export const metadata: Metadata = { title: "実績・資料" };
 
 export default function ResultsPage() {
   return <>
     <PageHero index="04" label="RESULTS & RESOURCES" title="数字、大学、記録から見るJISAの活動。" intro="2015年に始まった韓国大学との交流をはじめ、グローバルネットワーク、実施大学、説明実績、映像資料を整理してご紹介します。" />
-    <section className="statBand"><div className="stats">{stats.map(stat => <div className="stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></section>
+    <StatBand stats={stats} />
     <section className="section"><div className="wrap"><SectionHeading label="KOREA NETWORK" title="韓国大学との交流・実施実績" text="実際にインターンシップを実施した大学と、2025〜2026年度に制度説明を行った大学を分けて掲載しています。" />
       <div className="universityColumns">
         <article className="universityGroup"><h3>インターンシップ実施大学</h3><p>2015年以降の提供資料に基づく実施先</p><ul className="nameList">{pastUniversities.map(name => <li key={name}>{name}</li>)}</ul></article>

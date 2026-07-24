@@ -189,6 +189,38 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 .stat strong { color: var(--blue); font-size: clamp(26px, 3vw, 38px); font-weight: 750; line-height: 1.25; }
 .stat span { color: var(--muted); font-size: 12px; font-weight: 650; }
 
+/* The network figures double as the buttons that open the flag strip. Reset the
+   button chrome so they stay visually identical to the cells beside them. */
+.statToggle { border-top: 0; border-right: 0; border-bottom: 0; text-align: left; cursor: pointer; color: inherit; }
+
+/* Network flags. Collapsed to zero height rather than removed, so the browser
+   fetches the artwork on page load instead of on the first click. */
+.flagStrip { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s cubic-bezier(.22,.68,.36,1), opacity .3s ease; }
+.flagStrip[data-open] { max-height: 300px; opacity: 1; }
+.flagTrack {
+  width: min(var(--wrap), calc(100% - 40px)); margin: 0 auto; padding: 30px 0 34px;
+  overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+  scrollbar-width: thin; cursor: grab;
+  /* Fades the cut-off edges so it reads as "there is more over here". */
+  mask-image: linear-gradient(90deg, transparent, black 24px, black calc(100% - 24px), transparent);
+}
+.flagTrack[data-dragging] { cursor: grabbing; }
+.flagRow { display: flex; flex-wrap: nowrap; gap: 22px; width: max-content; padding: 0 24px; }
+.flagChip {
+  flex: none; width: 200px; height: 150px; border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(21,64,95,.2); user-select: none;
+  transform-origin: left center;
+  animation: flagWave 3.4s ease-in-out infinite;
+  /* Negative offsets start each flag further into the cycle, so the row ripples
+     left to right instead of flapping in unison. */
+  animation-delay: calc(var(--flag-i, 0) * -.22s);
+}
+@keyframes flagWave {
+  0%, 100% { transform: perspective(1100px) rotateY(0deg) skewY(0deg); }
+  25% { transform: perspective(1100px) rotateY(13deg) skewY(1deg); }
+  75% { transform: perspective(1100px) rotateY(-13deg) skewY(-1deg); }
+}
+
 .section { position: relative; padding: 108px 0; }
 /* Sky wash, on the white sections only — the soft ones already carry colour, and
    alternating the two gives the page a rhythm it did not have. Fills the dead
@@ -467,7 +499,7 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .brand strong { font-size: 11px; }
   .brand small { display: none; }
   .homeSlider, .slideInner { min-height: 650px; }
-  .slideInner, .wrap, .stats, .pageHeroInner, .footerLead, .footerGrid { width: calc(100% - 28px); }
+  .slideInner, .wrap, .stats, .flagTrack, .pageHeroInner, .footerLead, .footerGrid { width: calc(100% - 28px); }
   .slideInner { grid-template-columns: 1fr; padding: 62px 0 116px; }
   .slideCopy h1 { font-size: 35px; line-height: 1.35; }
   .slideCopy .lead { margin: 20px 0 28px; font-size: 15px; }
@@ -524,4 +556,6 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   /* An infinite animation forced to .01ms does not stop — it strobes. Kill the
      drifting wash outright and leave it at a fixed position. */
   .section:not(.soft)::before { animation: none !important; transform: none !important; }
+  /* Same trap: the flags would flutter at .01ms instead of standing still. */
+  .flagChip { animation: none !important; transform: none !important; }
 }

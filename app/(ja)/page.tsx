@@ -3,6 +3,7 @@ import { HomeHero } from "../home-hero";
 import { LegalNote, SectionHeading } from "../site-chrome";
 import { stats, videos } from "../site-data";
 import { SectionMedia } from "../section-media";
+import { StatBand } from "../stat-band";
 import { VideoBlock } from "../video-block";
 
 export default function Home() {
@@ -10,11 +11,7 @@ export default function Home() {
     <>
       <HomeHero />
 
-      <section className="statBand" aria-label="JISAの実績">
-        <div className="stats">
-          {stats.map((stat) => <div className="stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
-        </div>
-      </section>
+      <StatBand stats={stats} label="JISAの実績" />
 
       <section className="section">
         <div className="wrap splitMedia">

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero, SectionHeading } from "../../../site-chrome";
 import { briefingUniversitiesKo, pastUniversitiesKo, resourcesKo, statsKo, videosKo } from "../../../site-data-ko";
+import { StatBand } from "../../../stat-band";
 
 export const metadata: Metadata = { title: "실적·자료" };
 
 export default function KoreanResultsPage() {
   return <>
     <PageHero index="04" label="RESULTS & RESOURCES" title="숫자와 대학, 기록으로 확인하는 JISA의 활동." intro="2015년에 시작한 한국 대학과의 교류를 비롯해 글로벌 네트워크, 운영 대학, 제도 설명 실적과 영상 자료를 정리해 소개합니다." />
-    <section className="statBand"><div className="stats">{statsKo.map(stat => <div className="stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></section>
+    <StatBand stats={statsKo} />
     <section className="section"><div className="wrap"><SectionHeading label="KOREA NETWORK" title="한국 대학 교류·운영 실적" text="실제로 인턴십을 운영한 대학과 2025~2026년에 제도 설명을 진행한 대학을 구분해 안내합니다." /><div className="universityColumns">
       <article className="universityGroup"><h3>인턴십 운영 대학</h3><p>2015년 이후 제공받은 자료에 따른 운영 대학</p><ul className="nameList">{pastUniversitiesKo.map(name => <li key={name}>{name}</li>)}</ul></article>
       <article className="universityGroup"><h3>제도 설명을 진행한 대학</h3><p>2025~2026년 제도 설명 실적</p><ul className="nameList">{briefingUniversitiesKo.map(name => <li key={name}>{name}</li>)}</ul></article>

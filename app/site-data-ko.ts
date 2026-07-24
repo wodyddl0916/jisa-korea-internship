@@ -1,8 +1,10 @@
-export const statsKo = [
+import type { Stat } from "./network-flags";
+
+export const statsKo: Stat[] = [
   { value: "2013", label: "인턴십 전문 사업 시작" },
-  { value: "11개국", label: "글로벌 네트워크" },
-  { value: "70개 대학", label: "대학 네트워크" },
-  { value: "1,100명+", label: "인턴 수용·채용 지원 실적" },
+  { value: "11개국", label: "글로벌 네트워크", flags: true },
+  { value: "70개 대학", label: "대학 네트워크", flags: true },
+  { value: "1,100명+", label: "인턴 수용·채용 지원 실적", flags: true },
 ];
 
 export const pastUniversitiesKo = [

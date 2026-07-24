@@ -3,12 +3,13 @@ import { HomeHero } from "../../home-hero";
 import { LegalNote, SectionHeading } from "../../site-chrome";
 import { statsKo, videosKo } from "../../site-data-ko";
 import { SectionMedia } from "../../section-media";
+import { StatBand } from "../../stat-band";
 import { VideoBlock } from "../../video-block";
 
 export default function KoreanHome() {
   return <>
     <HomeHero locale="ko" />
-    <section className="statBand" aria-label="JISA 주요 실적"><div className="stats">{statsKo.map(stat => <div className="stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></section>
+    <StatBand stats={statsKo} label="JISA 주요 실적" />
 
     <section className="section"><div className="wrap splitMedia">
       <div>

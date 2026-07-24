@@ -1,3 +1,5 @@
+import type { Stat } from "./network-flags";
+
 export const navigation = [
   { href: "/", label: "ホーム" },
   { href: "/about", label: "JISAとは" },
@@ -7,11 +9,11 @@ export const navigation = [
   { href: "/future", label: "今後の展開" },
 ];
 
-export const stats = [
+export const stats: Stat[] = [
   { value: "2013", label: "インターンシップ専門事業開始" },
-  { value: "11か国", label: "グローバルネットワーク" },
-  { value: "70大学", label: "大学ネットワーク" },
-  { value: "1,100名+", label: "受入・採用支援実績" },
+  { value: "11か国", label: "グローバルネットワーク", flags: true },
+  { value: "70大学", label: "大学ネットワーク", flags: true },
+  { value: "1,100名+", label: "受入・採用支援実績", flags: true },
 ];
 
 export const pastUniversities = [
