@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import { ScrollReveal } from "../scroll-reveal";
 import { Footer, Header, RouteTransition } from "../site-chrome";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function JapaneseRootLayout({
         <Header />
         <main><RouteTransition>{children}</RouteTransition></main>
         <Footer />
+        <ScrollReveal />
       </body>
     </html>
   );

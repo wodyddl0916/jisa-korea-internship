@@ -29,6 +29,17 @@ export const slideImages: Record<string, SiteImage> = {
   "VISION 2026–2027": { src: "/assets/network-collage.jpg", focus: "right center" },
 };
 
+/**
+ * Photos that fill the empty half of the text-only home sections. Keys match
+ * the `name` passed to `SectionMedia`.
+ */
+export const sectionImages: Record<string, SiteImage> = {
+  "our-role": { src: "/assets/meeting-design.jpg", focus: "center" },
+  // Pale desk flatlay — reinforces the white ground rather than punching a
+  // dark rectangle into it.
+  partnership: { src: "/assets/planning-desk.jpg", focus: "center" },
+};
+
 /** Page heroes — keys match the `label` passed to `PageHero`. */
 export const pageImages: Record<string, SiteImage> = {
   "ABOUT JISA": { src: "/assets/jisa-brand.jpg", focus: "left center" },
@@ -37,8 +48,7 @@ export const pageImages: Record<string, SiteImage> = {
   "PROGRAMS": { src: "/assets/visa-screening.jpg", focus: "24% center" },
   "PUBLIC PARTNERSHIP": { src: "/assets/university-briefing.jpg" },
   "RESULTS & RESOURCES": { src: "/assets/global-network.jpg" },
-  // Framed onto the skyline so the cut-off "WELCOME TO JAPAN" lettering stays out.
-  // Pale line art, so the label and index switch to ink.
-  "VISION 2026–2027": { src: "/assets/welcome-japan.jpg", focus: "right center", tone: "light" },
+  // Replaces a watermarked Adobe Stock comp with a licensed photograph.
+  "VISION 2026–2027": { src: "/assets/tokyo-tower.jpg", focus: "center" },
   "CONTACT": { src: "/assets/engineering-work.jpg", focus: "left center" },
 };

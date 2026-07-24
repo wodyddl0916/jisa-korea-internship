@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { HomeHero } from "../home-hero";
 import { LegalNote, SectionHeading } from "../site-chrome";
-import { stats } from "../site-data";
+import { stats, videos } from "../site-data";
+import { SectionMedia } from "../section-media";
+import { VideoBlock } from "../video-block";
 
 export default function Home() {
   return (
@@ -15,13 +17,16 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <div className="wrap split">
-          <SectionHeading label="OUR ROLE" title="人材紹介ではなく、教育と実務を設計する支援機関です。" />
-          <div className="prose">
-            <p>JISAは、海外大学が実施する正規の海外実習として、単位取得を伴う教育課程の一環としての日本企業での職場体験を支援します。</p>
-            <p><strong>単なる労働力の確保ではありません。</strong> 実習内容の可視化、在留資格取得に必要なカリキュラム作成、来日・生活・実習期間中の管理までを一貫して支えます。</p>
-            <Link className="textLink" href="/about">JISAの理念と支援体制 <span>→</span></Link>
+        <div className="wrap splitMedia">
+          <div>
+            <SectionHeading label="OUR ROLE" title="人材紹介ではなく、教育と実務を設計する支援機関です。" />
+            <div className="prose">
+              <p>JISAは、海外大学が実施する正規の海外実習として、単位取得を伴う教育課程の一環としての日本企業での職場体験を支援します。</p>
+              <p><strong>単なる労働力の確保ではありません。</strong> 実習内容の可視化、在留資格取得に必要なカリキュラム作成、来日・生活・実習期間中の管理までを一貫して支えます。</p>
+              <Link className="textLink" href="/about">JISAの理念と支援体制 <span>→</span></Link>
+            </div>
           </div>
+          <SectionMedia name="our-role" alt="大学関係者との打合せ風景" />
         </div>
       </section>
 
@@ -50,9 +55,21 @@ export default function Home() {
       </section>
 
       <section className="section soft">
-        <div className="wrap split reverse">
-          <div className="quietPanel"><p className="eyebrow">PUBLIC PARTNERSHIP</p><h3>韓国産業人力公団との連携モデル</h3><p>海外就業支援事業「WELL」や「K-Move」等の公的支援スキームと連携し、JISAが企業開拓から大学窓口、個別カリキュラム設計までを担います。</p></div>
-          <div><SectionHeading label="HRD KOREA × JISA" title="信頼性と継続性を、公的な連携から。" text="大学の教育予算を圧迫しにくい仕組みと、企業が安心して受け入れられる支援体制を構築します。" /><Link className="textLink" href="/partnership">連携モデルを見る <span>→</span></Link></div>
+        <div className="wrap splitMedia reverse">
+          <SectionMedia name="partnership" alt="入国後の日本語講習の様子" />
+          <div>
+            <SectionHeading label="HRD KOREA × JISA" title="信頼性と継続性を、公的な連携から。" text="大学の教育予算を圧迫しにくい仕組みと、企業が安心して受け入れられる支援体制を構築します。" />
+            <div className="quietPanel"><p className="eyebrow">PUBLIC PARTNERSHIP</p><h3>韓国産業人力公団との連携モデル</h3><p>海外就業支援事業「WELL」や「K-Move」等の公的支援スキームと連携し、JISAが企業開拓から大学窓口、個別カリキュラム設計までを担います。</p></div>
+            <Link className="textLink" href="/partnership">連携モデルを見る <span>→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <SectionHeading label="PROGRAM RECORDS" title="実際の現場を、映像でご覧いただけます。" text="入国セミナー、参加学生のインタビュー、採用面接の記録です。" />
+          <VideoBlock videos={videos.slice(0, 3)} />
+          <div className="sectionAction"><Link className="button" href="/results">すべての記録を見る <span>→</span></Link></div>
         </div>
       </section>
     </>

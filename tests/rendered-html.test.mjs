@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import test from "node:test";
 
-import { pageImages, slideImages } from "../app/site-images.ts";
+import { pageImages, sectionImages, slideImages } from "../app/site-images.ts";
+import { youTubeId } from "../app/youtube.ts";
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -76,6 +77,7 @@ test("every slot image resolves to a file in public/", async () => {
   const entries = [
     ...Object.entries(slideImages).map(([label, image]) => [`slide:${label}`, image]),
     ...Object.entries(pageImages).map(([label, image]) => [`page:${label}`, image]),
+    ...Object.entries(sectionImages).map(([name, image]) => [`section:${name}`, image]),
   ];
   assert.ok(entries.length > 0, "expected slot images to be declared");
 
@@ -97,6 +99,41 @@ test("fills every page hero, replacing the placeholder guidance", async () => {
   const korean = await renderHtml("/ko/about");
   assert.match(korean, /class="[^"]*\bhasImage\b/);
   assert.doesNotMatch(korean, /추천 사진/);
+});
+
+test("server-renders content that scroll reveal only enhances", async () => {
+  const html = await renderHtml("/");
+
+  // The hidden state is scoped to [data-reveal-ready], which only the client
+  // sets. If it ever shipped in the SSR payload, a JS failure would leave the
+  // page blank below the hero.
+  assert.doesNotMatch(html, /data-reveal-ready/);
+  assert.doesNotMatch(html, /is-revealed/);
+
+  // Counters animate from zero in the browser, but the served markup must
+  // already carry the real figures for crawlers and no-JS visitors.
+  for (const value of ["2013", "11か国", "70大学", "1,100名+"]) {
+    assert.ok(html.includes(value), `expected the served page to contain ${value}`);
+  }
+});
+
+test("keeps YouTube behind a click, not in the served markup", async () => {
+  for (const route of ["/", "/ko"]) {
+    const html = await renderHtml(route);
+    // The facade must not embed anything up front: no iframe means the visitor
+    // is not handed to YouTube just for loading the home page.
+    assert.doesNotMatch(html, /<iframe/i, `${route} should ship no iframe`);
+    assert.doesNotMatch(html, /youtube-nocookie/, `${route} should not preload the player`);
+    assert.match(html, /img\.youtube\.com\/vi\//, `${route} should render poster thumbnails`);
+  }
+});
+
+test("parses both YouTube URL shapes present in the data", () => {
+  assert.equal(youTubeId("https://youtu.be/Z0ph6SQnnZE"), "Z0ph6SQnnZE");
+  // Shorts links carry a query string and can start with a hyphen.
+  assert.equal(youTubeId("https://youtube.com/shorts/-_GhrC72XiU?feature=share"), "-_GhrC72XiU");
+  assert.equal(youTubeId("https://www.youtube.com/watch?v=abc123"), "abc123");
+  assert.equal(youTubeId("not a url"), null);
 });
 
 test("does not ship the starter loading skeleton", async () => {
