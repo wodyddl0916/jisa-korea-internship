@@ -34,9 +34,9 @@ export default function Home() {
         <div className="wrap">
           <SectionHeading label="FOR EACH PARTNER" title="立場ごとに必要な情報をご案内します。" text="大学、受入企業、参加希望者の三者に価値が生まれるプログラムを目指します。" />
           <div className="audienceGrid">
-            <article className="audienceCard surfaceCard"><span className="number">01</span><h3>大学・教育機関の方</h3><p>低コストで継続できる国際実習、単位認定、卒業生を含むキャリア支援をご案内します。</p><Link className="cardAction" href="/partnership#universities">大学のメリット <b>→</b></Link></article>
-            <article className="audienceCard surfaceCard"><span className="number">02</span><h3>日本企業の方</h3><p>受入準備、学生とのマッチング、実習設計、在留資格、来日後管理まで支援します。</p><Link className="cardAction" href="/partnership#companies">企業のメリット <b>→</b></Link></article>
-            <article className="audienceCard surfaceCard"><span className="number">03</span><h3>参加を希望する方</h3><p>大学主催の短期実習、政府支援型、長期有給実習から目的に合う制度を確認できます。</p><Link className="cardAction" href="/programs">参加コースを確認 <b>→</b></Link></article>
+            <article className="audienceCard surfaceCard"><span className="number">01</span><h3>大学・教育機関の方</h3><p>国際実習、単位認定から、最終的な就職支援までご案内します。</p><Link className="cardAction" href="/partnership#universities">大学のメリット <b>→</b></Link></article>
+            <article className="audienceCard surfaceCard"><span className="number">02</span><h3>参加を希望する方</h3><p>大学主催の短期実習、政府支援型、長期有給実習から目的に合う制度を確認できます。</p><Link className="cardAction" href="/programs">参加コースを確認 <b>→</b></Link></article>
+            <article className="audienceCard surfaceCard"><span className="number">03</span><h3>日本企業の方</h3><p>受入準備、学生とのマッチング、実習設計、在留資格、来日後管理まで支援します。</p><Link className="cardAction" href="/partnership#companies">企業のメリット <b>→</b></Link></article>
           </div>
         </div>
       </section>

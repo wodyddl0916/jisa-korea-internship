@@ -21,9 +21,9 @@ export default function KoreanHome() {
     <section className="section soft"><div className="wrap">
       <SectionHeading label="FOR EACH PARTNER" title="대학·기업·참가자에게 필요한 정보를 안내합니다." text="세 주체 모두에게 지속 가능한 가치가 생기는 프로그램을 지향합니다." />
       <div className="audienceGrid">
-        <article className="audienceCard surfaceCard"><span className="number">01</span><h3>대학·교육기관</h3><p>비용 부담을 낮춘 국제 실습, 학점 인정, 졸업생을 포함한 진로 지원 방안을 안내합니다.</p><Link className="cardAction" href="/ko/partnership#universities">대학의 장점 <b>→</b></Link></article>
-        <article className="audienceCard surfaceCard"><span className="number">02</span><h3>일본 기업</h3><p>수용 준비, 학생 매칭, 실습 설계, 체류 자격, 일본 입국 후 관리까지 지원합니다.</p><Link className="cardAction" href="/ko/partnership#companies">기업의 장점 <b>→</b></Link></article>
-        <article className="audienceCard surfaceCard"><span className="number">03</span><h3>참가 희망자</h3><p>대학 주관 단기 실습, 정부 지원형, 장기 유급 실습 중 목적에 맞는 제도를 확인할 수 있습니다.</p><Link className="cardAction" href="/ko/programs">참가 과정 확인 <b>→</b></Link></article>
+        <article className="audienceCard surfaceCard"><span className="number">01</span><h3>대학·교육기관</h3><p>국제 실습과 학점 인정부터 최종적인 취업 지원까지 안내합니다.</p><Link className="cardAction" href="/ko/partnership#universities">대학의 장점 <b>→</b></Link></article>
+        <article className="audienceCard surfaceCard"><span className="number">02</span><h3>참가 희망자</h3><p>대학 주관 단기 실습, 정부 지원형, 장기 유급 실습 중 목적에 맞는 제도를 확인할 수 있습니다.</p><Link className="cardAction" href="/ko/programs">참가 과정 확인 <b>→</b></Link></article>
+        <article className="audienceCard surfaceCard"><span className="number">03</span><h3>일본 기업</h3><p>수용 준비, 학생 매칭, 실습 설계, 체류 자격, 일본 입국 후 관리까지 지원합니다.</p><Link className="cardAction" href="/ko/partnership#companies">기업의 장점 <b>→</b></Link></article>
       </div>
     </div></section>
 
