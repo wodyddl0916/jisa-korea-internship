@@ -275,6 +275,12 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 .splitMedia .quietPanel { margin-top: 26px; }
 .splitMedia .textLink { margin-top: 24px; }
 
+.fieldShowcase { display: grid; grid-template-columns: minmax(280px, .65fr) minmax(0, 1.35fr); align-items: center; gap: 64px; }
+.fieldShowcase .sectionHeading { margin-bottom: 0; }
+.fieldPhoto { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: white; box-shadow: 0 18px 42px rgba(23,78,120,.16); }
+.fieldPhoto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+.fieldPhoto figcaption { position: absolute; left: 18px; bottom: 18px; padding: 8px 11px; color: white; background: rgba(12,57,87,.84); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+
 .prose p { margin: 0 0 18px; color: var(--muted); }
 .prose strong { color: var(--ink); }
 .quietPanel { position: relative; padding: 42px; background: white; border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 6px; box-shadow: var(--shadow); }
@@ -520,9 +526,10 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .stat:nth-child(2) { border-right: 1px solid var(--line); }
   .section { padding: 76px 0; }
   .sectionHeading { margin-bottom: 36px; }
-  .splitMedia, .splitMedia.reverse { grid-template-columns: 1fr; gap: 34px; }
+  .splitMedia, .splitMedia.reverse, .fieldShowcase { grid-template-columns: 1fr; gap: 34px; }
   .splitMedia.reverse .sectionMedia { order: 2; }
   .sectionMedia { min-height: 260px; }
+  .fieldShowcase .sectionHeading { margin-bottom: 0; }
   .split, .split.reverse, .audienceGrid, .programPreview, .featureGrid, .benefitColumns, .universityColumns, .resourceGrid, .roadmap, .contactChoice, .contactDetails { grid-template-columns: 1fr; }
   .audienceCard { min-height: 220px; }
   .audienceCard h3 { margin-top: 28px; }

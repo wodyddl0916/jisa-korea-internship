@@ -23,7 +23,7 @@ export default function Home() {
               <Link className="textLink" href="/about">JISAの理念と支援体制 <span>→</span></Link>
             </div>
           </div>
-          <SectionMedia name="our-role" alt="大学関係者との打合せ風景" />
+          <SectionMedia name="our-role" alt="日本企業の職場で指導を受けるインターン参加者" />
         </div>
       </section>
 
@@ -53,7 +53,7 @@ export default function Home() {
 
       <section className="section soft">
         <div className="wrap splitMedia reverse">
-          <SectionMedia name="partnership" alt="入国後の日本語講習の様子" />
+          <SectionMedia name="partnership" alt="参加者と担当者によるチームミーティング" />
           <div>
             <SectionHeading label="HRD KOREA × JISA" title="信頼性と継続性を、公的な連携から。" text="大学の教育予算を圧迫しにくい仕組みと、企業が安心して受け入れられる支援体制を構築します。" />
             <div className="quietPanel"><p className="eyebrow">PUBLIC PARTNERSHIP</p><h3>韓国産業人力公団との連携モデル</h3><p>海外就業支援事業「WELL」や「K-Move」等の公的支援スキームと連携し、JISAが企業開拓から大学窓口、個別カリキュラム設計までを担います。</p></div>

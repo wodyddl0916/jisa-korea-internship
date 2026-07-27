@@ -20,13 +20,11 @@ export type SiteImage = {
 
 /** Home carousel — keys match `label` in both `slides` and `slidesKo`. */
 export const slideImages: Record<string, SiteImage> = {
-  // Anchored to the top so the collage's white gutter falls behind the button
-  // rather than across the lead paragraph.
-  "ABOUT JISA": { src: "/assets/worksite-collage.jpg", focus: "center top" },
-  "THREE PROGRAMS": { src: "/assets/japanese-training.jpg", focus: "right center" },
-  "PUBLIC PARTNERSHIP": { src: "/assets/university-briefing.jpg", focus: "center 40%" },
+  "ABOUT JISA": { src: "/assets/workplace-mentoring.jpg", focus: "center 44%" },
+  "THREE PROGRAMS": { src: "/assets/software-internship.jpg", focus: "center 48%" },
+  "PUBLIC PARTNERSHIP": { src: "/assets/team-meeting.jpg", focus: "center 46%" },
   "RESULTS & RESOURCES": { src: "/assets/global-network.jpg" },
-  "VISION 2026–2027": { src: "/assets/network-collage.jpg", focus: "right center" },
+  "VISION 2026–2027": { src: "/assets/tokyo-tower.jpg", focus: "center" },
 };
 
 /**
@@ -34,21 +32,16 @@ export const slideImages: Record<string, SiteImage> = {
  * the `name` passed to `SectionMedia`.
  */
 export const sectionImages: Record<string, SiteImage> = {
-  "our-role": { src: "/assets/meeting-design.jpg", focus: "center" },
-  // Pale desk flatlay — reinforces the white ground rather than punching a
-  // dark rectangle into it.
-  partnership: { src: "/assets/planning-desk.jpg", focus: "center" },
+  "our-role": { src: "/assets/workplace-mentoring.jpg", focus: "center 44%" },
+  partnership: { src: "/assets/team-meeting.jpg", focus: "center 45%" },
 };
 
 /** Page heroes — keys match the `label` passed to `PageHero`. */
 export const pageImages: Record<string, SiteImage> = {
-  "ABOUT JISA": { src: "/assets/jisa-brand.jpg", focus: "left center" },
-  // Held left so the burnt-in 審査 lettering stays out of the wider mobile crop,
-  // where it would otherwise sit directly under the index numeral.
-  "PROGRAMS": { src: "/assets/visa-screening.jpg", focus: "24% center" },
-  "PUBLIC PARTNERSHIP": { src: "/assets/university-briefing.jpg" },
+  "ABOUT JISA": { src: "/assets/workplace-mentoring.jpg", focus: "center 44%" },
+  "PROGRAMS": { src: "/assets/software-internship.jpg", focus: "center 48%" },
+  "PUBLIC PARTNERSHIP": { src: "/assets/team-meeting.jpg", focus: "center 46%" },
   "RESULTS & RESOURCES": { src: "/assets/global-network.jpg" },
-  // Replaces a watermarked Adobe Stock comp with a licensed photograph.
   "VISION 2026–2027": { src: "/assets/tokyo-tower.jpg", focus: "center" },
-  "CONTACT": { src: "/assets/engineering-work.jpg", focus: "left center" },
+  "CONTACT": { src: "/assets/workplace-mentoring.jpg", focus: "center 42%" },
 };

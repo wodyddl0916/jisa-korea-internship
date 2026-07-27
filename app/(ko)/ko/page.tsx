@@ -16,7 +16,7 @@ export default function KoreanHome() {
         <SectionHeading label="OUR ROLE" title="인재 소개가 아니라 교육과 실무를 설계하는 지원 기관입니다." />
         <div className="prose"><p>JISA는 해외 대학이 운영하는 정규 해외 실습을 일본 기업의 현장 경험과 연결하고, 학점 취득이 가능한 교육과정의 일부로 운영될 수 있도록 지원합니다.</p><p><strong>단순한 인력 확보를 위한 사업이 아닙니다.</strong> 실습 내용의 구체화, 체류 자격 취득에 필요한 커리큘럼 작성, 일본 입국과 생활, 실습 기간 중 관리까지 일관되게 지원합니다.</p><Link className="textLink" href="/ko/about">JISA의 철학과 지원 체계 <span>→</span></Link></div>
       </div>
-      <SectionMedia name="our-role" alt="대학 관계자와의 회의 모습" />
+      <SectionMedia name="our-role" alt="일본 기업 현장에서 지도를 받는 인턴 참가자" />
     </div></section>
 
     <section className="section soft"><div className="wrap">
@@ -39,7 +39,7 @@ export default function KoreanHome() {
     </div></section>
 
     <section className="section soft"><div className="wrap splitMedia reverse">
-      <SectionMedia name="partnership" alt="입국 후 일본어 강습 현장" />
+      <SectionMedia name="partnership" alt="참가자와 담당자가 함께하는 팀 회의" />
       <div>
         <SectionHeading label="HRD KOREA × JISA" title="공공 협력을 기반으로 신뢰성과 지속성을 높입니다." text="대학의 교육 예산 부담을 낮추고 기업이 안심하고 참가자를 수용할 수 있는 지원 체계를 구축합니다." />
         <div className="quietPanel"><p className="eyebrow">PUBLIC PARTNERSHIP</p><h3>한국산업인력공단과의 협력 모델</h3><p>해외 취업 지원 사업인 WELL·K-Move 등 공공 지원 체계와 연계하고, JISA가 기업 발굴부터 대학 창구, 개별 커리큘럼 설계까지 담당합니다.</p></div>
