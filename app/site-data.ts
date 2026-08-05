@@ -17,22 +17,22 @@ export const stats: Stat[] = [
 ];
 
 export const pastUniversities = [
-  "国立 全南大学（Chonnam National University）",
-  "漢陽女子大学（Hanyang Women’s University）",
-  "大邱カトリック大学（Daegu Catholic University）",
-  "大邱大学（Daegu University）",
-  "檀国大学（Dankook University）",
-  "韓信大学（Hanshin University）",
-  "朝鮮大学（Chosun University）",
+  { name: "国立 全南大学（Chonnam National University）", url: "https://www.jnu.ac.kr/" },
+  { name: "漢陽女子大学（Hanyang Women’s University）", url: "https://www.hywoman.ac.kr/" },
+  { name: "大邱カトリック大学（Daegu Catholic University）", url: "https://www.cu.ac.kr/" },
+  { name: "大邱大学（Daegu University）", url: "https://www.daegu.ac.kr/" },
+  { name: "檀国大学（Dankook University）", url: "https://www.dankook.ac.kr/" },
+  { name: "韓神大学校（Hanshin University）", url: "https://www.hs.ac.kr/" },
+  { name: "朝鮮大学（Chosun University）", url: "https://global.chosun.ac.kr/" },
 ];
 
 export const briefingUniversities = [
-  "慶熙大学（Kyung Hee University）",
-  "国立 昌原大学校（Changwon National University）",
-  "国立 全北大学校（Jeonbuk National University）",
-  "国立 群山大学校（Kunsan National University）",
-  "国立 順天大学校（Suncheon National University）",
-  "国立 済州大学校（Jeju National University）",
+  { name: "慶熙大学（Kyung Hee University）", url: "https://www.khu.kr/" },
+  { name: "国立 昌原大学校（Changwon National University）", url: "https://www.changwon.ac.kr/" },
+  { name: "国立 全北大学校（Jeonbuk National University）", url: "https://www.jbnu.ac.kr/" },
+  { name: "国立 群山大学校（Kunsan National University）", url: "https://www.kunsan.ac.kr/" },
+  { name: "国立 順天大学校（Sunchon National University）", url: "https://www.scnu.ac.kr/" },
+  { name: "国立 済州大学校（Jeju National University）", url: "https://www.jejunu.ac.kr/" },
 ];
 
 export const videos = [

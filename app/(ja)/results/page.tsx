@@ -18,8 +18,8 @@ export default function ResultsPage() {
     </div></section>
     <section className="section soft"><div className="wrap"><SectionHeading label="KOREA NETWORK" title="韓国大学との交流・実施実績" text="実際にインターンシップを実施した大学と、2025〜2026年度に制度説明を行った大学を分けて掲載しています。" />
       <div className="universityColumns">
-        <article className="universityGroup"><h3>インターンシップ実施大学</h3><p>2015年以降の提供資料に基づく実施先</p><ul className="nameList">{pastUniversities.map(name => <li key={name}>{name}</li>)}</ul></article>
-        <article className="universityGroup"><h3>制度説明を実施した大学</h3><p>2025〜2026年度の説明実績</p><ul className="nameList">{briefingUniversities.map(name => <li key={name}>{name}</li>)}</ul></article>
+        <article className="universityGroup"><h3>インターンシップ実施大学</h3><p>2015年以降の提供資料に基づく実施先</p><ul className="nameList">{pastUniversities.map(university => <li key={university.url}><span>{university.name}</span><a href={university.url} target="_blank" rel="noreferrer" aria-label={`${university.name}の公式サイトを開く`}>公式サイト <b aria-hidden="true">↗</b></a></li>)}</ul></article>
+        <article className="universityGroup"><h3>制度説明を実施した大学</h3><p>2025〜2026年度の説明実績</p><ul className="nameList">{briefingUniversities.map(university => <li key={university.url}><span>{university.name}</span><a href={university.url} target="_blank" rel="noreferrer" aria-label={`${university.name}の公式サイトを開く`}>公式サイト <b aria-hidden="true">↗</b></a></li>)}</ul></article>
       </div>
     </div></section>
     <section className="section"><div className="wrap"><SectionHeading label="PROGRAM RECORDS" title="セミナー、来日、面接を映像で確認できます。" text="各大学の入国セミナー、参加者インタビュー、空港での来日記録など、提供資料に記載された映像リンクです。" />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, SectionHeading } from "../../../site-chrome";
+import { StudentActivityViewer } from "../../../student-activity-viewer";
 
 export const metadata: Metadata = { title: "HRD Korea 공공 협력" };
 
@@ -7,6 +8,10 @@ export default function KoreanPartnershipPage() {
   return <>
     <PageHero index="03" label="PUBLIC PARTNERSHIP" title="HRD Korea와 함께 지속 가능한 국제 실습 모델을 만듭니다." intro="한국 정부 산하 청년 취업 지원 기관인 한국산업인력공단과의 업무 협약을 바탕으로 해외 취업 지원 사업 WELL을 추진합니다." />
     <section className="section"><div className="wrap split"><SectionHeading label="HRD KOREA × JISA" title="공공 지원과 전문 설계를 하나의 운영 체계로 연결합니다." /><div className="prose"><p>JISA는 일본 내 수용 기업 발굴부터 한국 대학의 운영 창구까지 일관되게 담당하며 글로벌 인재의 육성과 활용을 지원합니다.</p><p>K-Move 등 해외 취업 지원 사업과 연계해 대학 교육 예산의 부담을 줄이고 지속적이며 안정적으로 운영할 수 있는 구조를 지향합니다.</p></div></div></section>
+    <section className="section operationsSection"><div className="wrap"><SectionHeading label="PROGRAM OPERATIONS" title="관리 체계와 지원 내용, 학생 활동을 한눈에 확인할 수 있게 구성합니다." text="대학과 JISA, 수용 기업이 역할을 나누고 준비부터 수료 이후까지 지속적으로 지원합니다." /><div className="operationGrid">
+      <article className="operationPanel"><p className="eyebrow">MANAGEMENT</p><h3>관리 체계</h3><ul className="operationList"><li><b>01</b><span><strong>대학·교육기관</strong>참가자 선발, 학내 조정, 학점과 교육 목표 확인</span></li><li><b>02</b><span><strong>JISA</strong>기업 발굴, 매칭, 개별 설계와 전체 운영 창구</span></li><li><b>03</b><span><strong>수용 기업</strong>현장 담당자 배치, 업무 지도, 진행·성과 평가</span></li></ul></article>
+      <article className="operationPanel"><p className="eyebrow">SUPPORT</p><h3>지원 내용</h3><ul className="operationList"><li><b>01</b><span><strong>실습 전</strong>기업 선정, 체류 절차, 사전 학습과 생활 준비</span></li><li><b>02</b><span><strong>실습 중</strong>입국 지원, 생활 상담, 정기 확인과 문제 대응</span></li><li><b>03</b><span><strong>실습 후</strong>성과 평가, 수료 보고와 진로·취업 지원</span></li></ul></article>
+    </div><StudentActivityViewer locale="ko" /></div></section>
     <section className="section soft"><div className="wrap"><SectionHeading label="SUPPORT FLOW" title="기업 발굴부터 실습 평가까지 하나의 흐름으로 지원합니다." /><div className="flow">
       <article className="flowStep"><b>01</b><h3>기업 발굴</h3><p>일본 기업의 사업 내용과 수용 목적을 확인합니다.</p></article>
       <article className="flowStep"><b>02</b><h3>대학·학생 모집</h3><p>한국 대학과의 운영 창구를 맡아 대상자를 모집합니다.</p></article>

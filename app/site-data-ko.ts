@@ -8,22 +8,22 @@ export const statsKo: Stat[] = [
 ];
 
 export const pastUniversitiesKo = [
-  "국립 전남대학교 (Chonnam National University)",
-  "한양여자대학교 (Hanyang Women’s University)",
-  "대구가톨릭대학교 (Daegu Catholic University)",
-  "대구대학교 (Daegu University)",
-  "단국대학교 (Dankook University)",
-  "한신대학교 (Hanshin University)",
-  "조선대학교 (Chosun University)",
+  { name: "국립 전남대학교 (Chonnam National University)", url: "https://www.jnu.ac.kr/" },
+  { name: "한양여자대학교 (Hanyang Women’s University)", url: "https://www.hywoman.ac.kr/" },
+  { name: "대구가톨릭대학교 (Daegu Catholic University)", url: "https://www.cu.ac.kr/" },
+  { name: "대구대학교 (Daegu University)", url: "https://www.daegu.ac.kr/" },
+  { name: "단국대학교 (Dankook University)", url: "https://www.dankook.ac.kr/" },
+  { name: "한신대학교 (Hanshin University)", url: "https://www.hs.ac.kr/" },
+  { name: "조선대학교 (Chosun University)", url: "https://global.chosun.ac.kr/" },
 ];
 
 export const briefingUniversitiesKo = [
-  "경희대학교 (Kyung Hee University)",
-  "국립 창원대학교 (Changwon National University)",
-  "국립 전북대학교 (Jeonbuk National University)",
-  "국립 군산대학교 (Kunsan National University)",
-  "국립 순천대학교 (Suncheon National University)",
-  "국립 제주대학교 (Jeju National University)",
+  { name: "경희대학교 (Kyung Hee University)", url: "https://www.khu.kr/" },
+  { name: "국립 창원대학교 (Changwon National University)", url: "https://www.changwon.ac.kr/" },
+  { name: "국립 전북대학교 (Jeonbuk National University)", url: "https://www.jbnu.ac.kr/" },
+  { name: "국립 군산대학교 (Kunsan National University)", url: "https://www.kunsan.ac.kr/" },
+  { name: "국립 순천대학교 (Sunchon National University)", url: "https://www.scnu.ac.kr/" },
+  { name: "국립 제주대학교 (Jeju National University)", url: "https://www.jejunu.ac.kr/" },
 ];
 
 export const videosKo = [

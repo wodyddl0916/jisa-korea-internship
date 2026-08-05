@@ -70,6 +70,8 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 [data-reveal-ready] .roadmapItem,
 [data-reveal-ready] .benefitItem,
 [data-reveal-ready] .universityGroup,
+[data-reveal-ready] .operationPanel,
+[data-reveal-ready] .activityViewer,
 [data-reveal-ready] .contactCard,
 [data-reveal-ready] .contactDetail,
 [data-reveal-ready] .stat,
@@ -406,7 +408,40 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
 .universityGroup h3 { margin: 0 0 6px; font-size: 20px; }
 .universityGroup > p { margin: 0 0 22px; color: var(--muted); font-size: 13px; }
 .nameList { margin: 0; padding: 0; list-style: none; }
-.nameList li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.nameList li { min-height: 58px; padding: 10px 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: 14px; }
+.nameList li > span { min-width: 0; }
+.nameList a { flex: 0 0 auto; min-height: 34px; padding: 5px 10px; border: 1px solid #b9d5e5; border-radius: 4px; background: var(--blue-soft); color: var(--blue-deep); display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; transition: color .2s, background .2s, border-color .2s, transform .2s; }
+.nameList a b { color: var(--blue); font-size: 14px; }
+.nameList a:hover, .nameList a:focus-visible { color: white; background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+.nameList a:hover b, .nameList a:focus-visible b { color: white; }
+
+.operationsSection { padding-top: 36px; }
+.operationGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.operationPanel { padding: 34px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 6px; background: white; box-shadow: var(--shadow); }
+.operationPanel h3 { margin: 0 0 22px; font-size: 22px; }
+.operationList { margin: 0; padding: 0; list-style: none; }
+.operationList li { padding: 16px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+.operationList li > b { color: var(--sky); font-size: 18px; line-height: 1.45; }
+.operationList span { color: var(--muted); font-size: 13px; }
+.operationList strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 14px; }
+.activityViewer { margin-top: 28px; border: 1px solid #b9d5e5; border-radius: 6px; background: var(--blue-soft); box-shadow: var(--shadow); overflow: hidden; }
+.activityViewer > summary { min-height: 94px; padding: 20px 28px; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; }
+.activityViewer > summary::-webkit-details-marker { display: none; }
+.activityViewer > summary span { display: grid; gap: 2px; }
+.activityViewer > summary small { color: var(--blue); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.activityViewer > summary strong { color: var(--blue-deep); font-size: 20px; }
+.activityViewer > summary > b { width: 42px; height: 42px; border: 1px solid #afd0e3; border-radius: 4px; background: white; color: var(--blue); display: grid; place-items: center; font-size: 24px; transition: transform .25s, color .2s, background .2s; }
+.activityViewer > summary:hover > b, .activityViewer > summary:focus-visible > b { color: white; background: var(--blue); }
+.activityViewer[open] > summary > b { transform: rotate(45deg); }
+.activityPanel { padding: 28px; border-top: 1px solid #c4dae7; background: white; }
+.activityIntro { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.activityIntro > span { flex: 0 0 auto; padding: 5px 9px; background: var(--blue-deep); color: white; font-size: 10px; font-weight: 800; }
+.activityIntro p { margin: 0; color: var(--muted); font-size: 13px; }
+.activityStageGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.activityStageGrid article { min-height: 142px; padding: 20px; border: 1px solid var(--line); border-radius: 5px; background: var(--soft); }
+.activityStageGrid article > b { color: var(--sky); font-size: 20px; }
+.activityStageGrid h3 { margin: 20px 0 5px; font-size: 15px; }
+.activityStageGrid p { margin: 0; color: var(--muted); font-size: 12px; }
 .videoGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .videoCard { min-height: 165px; padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 6px; background: white; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s; }
 .videoCard:hover { transform: translateY(-4px); border-top-color: var(--sky); box-shadow: var(--shadow); }
@@ -530,7 +565,7 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .splitMedia.reverse .sectionMedia { order: 2; }
   .sectionMedia { min-height: 260px; }
   .fieldShowcase .sectionHeading { margin-bottom: 0; }
-  .split, .split.reverse, .audienceGrid, .programPreview, .featureGrid, .benefitColumns, .universityColumns, .resourceGrid, .roadmap, .contactChoice, .contactDetails { grid-template-columns: 1fr; }
+  .split, .split.reverse, .audienceGrid, .programPreview, .featureGrid, .benefitColumns, .universityColumns, .resourceGrid, .roadmap, .contactChoice, .contactDetails, .operationGrid { grid-template-columns: 1fr; }
   .audienceCard { min-height: 220px; }
   .audienceCard h3 { margin-top: 28px; }
   .programMini { min-height: 300px; }
@@ -548,6 +583,12 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .detailGrid { grid-template-columns: 1fr 1fr; }
   .flow { grid-template-columns: 1fr; }
   .flowStep { min-height: auto; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .nameList li { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .activityViewer > summary { min-height: 78px; padding: 16px 18px; }
+  .activityViewer > summary strong { font-size: 16px; }
+  .activityPanel { padding: 20px; }
+  .activityIntro { align-items: flex-start; flex-direction: column; gap: 9px; }
+  .activityStageGrid { grid-template-columns: 1fr; }
   .videoGrid { grid-template-columns: 1fr; }
   .videoBlock { grid-template-columns: 1fr; gap: 20px; }
   .contactDetail { border-right: 0; border-bottom: 1px solid var(--line); }

@@ -22,6 +22,8 @@ const REVEAL_SELECTOR = [
   ".roadmapItem",
   ".benefitItem",
   ".universityGroup",
+  ".operationPanel",
+  ".activityViewer",
   ".contactCard",
   ".contactDetail",
   ".stat",
