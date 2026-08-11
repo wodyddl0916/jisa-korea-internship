@@ -76,6 +76,36 @@ h1, h2, h3, strong { font-weight: 700; }
   background: var(--usm-paper);
 }
 .usmArchive > :not(.usmStarfall) { position: relative; z-index: 1; }
+.usmLanguageSwitch {
+  position: fixed !important;
+  z-index: 20 !important;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(23, 78, 120, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 8px 26px rgba(23, 78, 120, .12);
+  backdrop-filter: blur(12px);
+}
+.usmLanguageSwitch a {
+  min-width: 62px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #5b6874;
+  text-align: center;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.2;
+  transition: color .2s ease, background .2s ease, transform .2s ease;
+}
+.usmLanguageSwitch a:hover { color: var(--usm-blue); transform: translateY(-1px); }
+.usmLanguageSwitch a[aria-current="page"] { color: white; background: var(--usm-blue); }
+.usmLanguageSwitch span { width: 1px; height: 17px; background: rgba(23, 78, 120, .16); }
 .usmStarfall { position: fixed; z-index: 2; inset: 0; overflow: hidden; pointer-events: none; }
 .usmStarfall i {
   position: absolute;
@@ -219,6 +249,8 @@ h1, h2, h3, strong { font-weight: 700; }
 }
 
 @media (max-width: 560px) {
+  .usmLanguageSwitch { top: 12px; right: 12px; }
+  .usmLanguageSwitch a { min-width: 55px; padding: 7px 9px; font-size: 10px; }
   .usmHero { min-height: 440px; padding-top: 72px; padding-bottom: 60px; }
   .usmHero h1 { font-size: 38px; }
   .usmHeroCopy > p:not(.usmKicker) { font-size: 14px; }

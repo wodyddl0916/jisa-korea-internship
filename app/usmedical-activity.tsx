@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { assetPath } from "./base-path";
@@ -199,6 +200,11 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
   const t = copy[locale];
 
   return <article className={`usmArchive usmStudentArchive usmLocale-${locale}`}>
+    <nav className="usmLanguageSwitch" aria-label={locale === "ko" ? "언어 선택" : "言語選択"}>
+      <Link href="/" lang="ja" aria-current={locale === "ja" ? "page" : undefined}>日本語</Link>
+      <span aria-hidden="true"></span>
+      <Link href="/ko" lang="ko" aria-current={locale === "ko" ? "page" : undefined}>한국어</Link>
+    </nav>
     <div className="usmStarfall" aria-hidden="true">
       {Array.from({ length: 32 }, (_, index) => {
         const style = {

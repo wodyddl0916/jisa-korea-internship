@@ -8,6 +8,8 @@ const korean = await readFile("out/ko/index.html", "utf8");
 test("publishes the standalone Japanese portfolio at the root", () => {
   assert.match(japanese, /<html[^>]*lang="ja"/);
   assert.match(japanese, /朝鮮大学 × US Medical/);
+  assert.match(japanese, /aria-label="言語選択"/);
+  assert.match(japanese, /href="\/jisa-korea-internship\/ko\/"/);
   assert.doesNotMatch(japanese, /class="siteHeader"/);
   assert.doesNotMatch(japanese, /usmBack/);
 });
@@ -15,6 +17,8 @@ test("publishes the standalone Japanese portfolio at the root", () => {
 test("publishes the Korean portfolio under ko", () => {
   assert.match(korean, /<html[^>]*lang="ko"/);
   assert.match(korean, /조선대학교 × US Medical/);
+  assert.match(korean, /aria-label="언어 선택"/);
+  assert.match(korean, /href="\/jisa-korea-internship\/"/);
   assert.doesNotMatch(korean, /class="siteHeader"/);
   assert.doesNotMatch(korean, /usmBack/);
 });
