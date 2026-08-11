@@ -8,13 +8,15 @@ const nextConfig: NextConfig = {
   // root, which throws off file tracing. Pin it to this project. `process.cwd()`
   // rather than `__dirname`: vinext loads this config as ESM, where it is undefined.
   turbopack: { root: process.cwd() },
+  // All images are already stored in public/assets. Serving them directly keeps
+  // local vinext development independent from Cloudflare's ASSETS/IMAGES bindings.
+  images: { unoptimized: true },
   ...(isGitHubPages
     ? {
         output: "export" as const,
         basePath: pagesBasePath,
         assetPrefix: pagesBasePath,
         trailingSlash: true,
-        images: { unoptimized: true },
       }
     : {}),
 };
