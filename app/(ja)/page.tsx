@@ -5,8 +5,13 @@ import { stats, videos } from "../site-data";
 import { SectionMedia } from "../section-media";
 import { StatBand } from "../stat-band";
 import { VideoBlock } from "../video-block";
+import { USMedicalActivity } from "../usmedical-activity";
 
 export default function Home() {
+  if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
+    return <USMedicalActivity locale="ja" />;
+  }
+
   return (
     <>
       <HomeHero />

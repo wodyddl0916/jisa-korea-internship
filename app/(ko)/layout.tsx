@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { ScrollReveal } from "../scroll-reveal";
 import { Footer, Header, RouteTransition } from "../site-chrome";
+import { assetPath } from "../base-path";
 
 export const metadata: Metadata = {
   title: {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   },
   description: "한국 대학·학생과 일본 기업을 연결하는 교육 목적의 JISA 인턴십 지원 사이트입니다.",
   icons: {
-    icon: "/assets/jisa-logo.png",
+    icon: assetPath("/assets/jisa-logo.png"),
   },
 };
 

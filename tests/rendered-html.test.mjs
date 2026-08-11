@@ -10,7 +10,7 @@ const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const japaneseRoutes = ["/", "/about", "/programs", "/partnership", "/results", "/activity", "/future", "/contact"];
+const japaneseRoutes = ["/", "/about", "/programs", "/partnership", "/results", "/activity", "/activity/usmedical", "/future", "/contact"];
 const koreanRoutes = japaneseRoutes.map((route) => (route === "/" ? "/ko" : `/ko${route}`));
 
 async function renderHtml(pathname) {
@@ -71,6 +71,36 @@ test("server-renders every Korean route", async () => {
   for (const route of koreanRoutes) {
     const html = await renderHtml(route);
     assert.match(html, /<html[^>]*\blang="ko"/i, `${route} should render in Korean`);
+  }
+});
+
+test("keeps the Korean and Japanese US Medical pages structurally aligned", async () => {
+  const [japanese, korean] = await Promise.all([
+    renderHtml("/activity/usmedical"),
+    renderHtml("/ko/activity/usmedical"),
+  ]);
+
+  assert.match(japanese, /朝鮮大学/);
+  assert.match(japanese, /実習活動記録/);
+  assert.doesNotMatch(
+    japanese,
+    /조선대학교|실습 활동 기록|마스코트 캐릭터/,
+    "Japanese activity content should not contain Korean copy",
+  );
+  assert.match(korean, /조선대학교/);
+  assert.match(korean, /실습 활동 기록/);
+  assert.doesNotMatch(korean, /마스코드/, "Korean page should use the correct 마스코트 spelling");
+
+  for (const [locale, html] of [["ja", japanese], ["ko", korean]]) {
+    assert.equal((html.match(/class="usmSectionLabel"/g) ?? []).length, 6, `${locale} should render sections 00–05`);
+    assert.equal((html.match(/<video\b/g) ?? []).length, 4, `${locale} should render the same four videos`);
+  }
+
+  const assetPaths = [...korean.matchAll(/(?:src|poster)="(\/assets\/activity\/usmedical\/[^"?]+)"/g)]
+    .map((match) => match[1]);
+  assert.ok(assetPaths.length > 0, "expected the activity page to reference local media");
+  for (const assetPath of new Set(assetPaths)) {
+    await access(new URL(`../public${assetPath}`, import.meta.url));
   }
 });
 

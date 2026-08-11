@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { CSSProperties } from "react";
+import { assetPath } from "./base-path";
 
 type Locale = "ja" | "ko";
 
@@ -7,7 +9,7 @@ const copy = {
   ko: {
     back: "학생 활동 기록으로 돌아가기",
     label: "US MEDICAL · STUDENT ACTIVITY",
-    title: <>조선대학교 x US Medical <br />실습 활동 기록</>,
+    title: <>조선대학교 × US Medical <br />실습 활동 기록</>,
     intro: "JISA 한일 인턴십 과정에서 US Medical에 파견되어 실습에 참여한 학생의 활동 기록을 정리했습니다.",
     profileLabel: "00 · STUDENT PROFILE",
     profileTitle: <>학생 소개</>,
@@ -38,14 +40,14 @@ const copy = {
       ["REVISE", "피드백 반영과 최종 수정", "중간 결과물을 비교하고 전달력이 부족한 부분을 보완해 최종 버전을 제작했습니다."],
     ],
     characterLabel: "03 · CHARACTER & WORLD",
-    characterTitle: <>마스코드 캐릭터와<br />세계관 스토리 제작</>,
+    characterTitle: <>마스코트 캐릭터와<br />세계관 스토리 제작</>,
     characterText: "제품을 친근하게 알리기 위해 포케덴 마스코트 캐릭터를 제작하고, 히어로와 악역이 등장하는 세계관을 포스터 형태의 캐릭터 가이드로 구성했습니다.",
     characterItems: [
       ["MASCOT CHARACTER", "포케덴 마스코트 ‘파치짱’", "포케덴의 깨끗하고 친근한 이미지를 전달할 수 있도록 구강 청결을 상징하는 마스코트 캐릭터를 기획하고, ChatGPT와 Canva AI를 활용해 이미지를 제작했습니다.", "pokeden-character.png", "포케덴 마스코트 캐릭터 파치짱"],
       ["WORLD GUIDE", "포케덴 세계관 포스터", "아이들이 포케덴의 기능을 쉽고 흥미롭게 이해할 수 있도록 제품의 역할을 ‘선’, 구강 문제를 ‘악’으로 설정해 히어로와 악역이 대립하는 세계관과 시나리오를 기획했습니다. 이후 ChatGPT를 활용해 캐릭터별 역할과 설정을 1장의 포스터로 나타냈습니다.", "pokeden-world-guide.png", "포케덴 캐릭터 세계관 포스터"],
     ],
     resultLabel: "04 · VIDEO OUTPUTS",
-    resultTitle: <>제작 과정에서 완성 결과물</>,
+    resultTitle: <>제작 과정에서 완성한 결과물</>,
     resultText: "각 영상은 콘셉트와 장면 구성에 맞춰 기획부터 제작·수정까지의 과정을 거쳐 완성한 결과물입니다. 재생 버튼을 누르면 실제 결과물을 확인할 수 있습니다.",
     videos: [
       ["01", "포케덴 제품 광고 시안", "제품 패키지와 일상 속 사용 장면을 중심으로 구성한 초기 광고 영상입니다.", "pokedenloop.mp4", ""],
@@ -98,13 +100,13 @@ reflection: <>
   ja: {
     back: "学生活動記録に戻る",
     label: "US MEDICAL · STUDENT ACTIVITY",
-    title: <>朝鮮大学 x US Medical <br />実習活動記録</>,
+    title: <>朝鮮大学 × US Medical <br />実習活動記録</>,
     intro: "JISA日韓インターンシッププログラムでUS Medicalに派遣され、実習に参加した学生の活動記録をまとめました。",
     profileLabel: "00 · STUDENT PROFILE",
     profileTitle: <>学生紹介</>,
     profileAlt: "US Medical派遣学生のプロフィール写真",
     profileFacts: [
-      ["University", "朝鮮大学校"],
+      ["University", "朝鮮大学"],
       ["Name", "パク・ジェヨン"],
       ["Major", "AI・SW学部 コンピュータ工学専攻"],
       ["Grade", "4年生"],
@@ -118,22 +120,22 @@ reflection: <>
     duties: [
       ["01", "コンセプト構成", "ポケデンの特徴と利用場面が短時間で伝わるよう、動画の方向性とシーンの流れを整理しました。"],
       ["02", "シーン制作・選定", "製品の利用場面と多様な環境を表現する映像素材を制作し、目的に合うカットを選びました。"],
-      ["03", "編集・修正", "選んだシーンを広告の流れに合わせて編集し、検討意見を反映しながら成果物を複数回修正しました。"],
+      ["03", "編集・修正", "選んだシーンを広告の流れに合わせて編集し、フィードバックを反映しながら成果物を何度も修正しました。"],
     ],
     processLabel: "02 · PRODUCTION PROCESS",
     processTitle: <>アイデアを映像にし、<br />フィードバックで完成</>,
     process: [
-      ["PLAN", "製品と伝達目標の整理", "ポケデンが必要とされる場面と、視聴者に伝えるべき中心的なメッセージを最初に整理しました。"],
+      ["PLAN", "製品と伝達目標の整理", "ポケデンが必要とされる場面と、視聴者に伝えるべき核となるメッセージを最初に整理しました。"],
       ["PROMPT", "シーンごとのプロンプト設計", "企画したシーンが希望する雰囲気と構図で表現されるよう、状況、人物、行動、背景などを具体的なプロンプトとして設計しました。"],
       ["GENERATE", "Google Flowによる動画生成", "テキストプロンプトをもとにAI動画を生成できるGoogle Flowを活用してシーンごとの動画を制作し、複数の結果を比較して広告に適したシーンを選定しました。"],
       ["REVISE", "フィードバックの反映と最終修正", "途中段階の成果物を比較し、伝達力が不足している部分を補いながら最終版を制作しました。"],
     ],
     characterLabel: "03 · CHARACTER & WORLD",
-    characterTitle: <>ポケデンの物語を広げる<br />キャラクターと世界観</>,
+    characterTitle: <>マスコットキャラクターと<br />世界観ストーリーの制作</>,
     characterText: "製品を親しみやすく伝えるためにポケデンのマスコットキャラクターを制作し、ヒーローと悪役が登場する世界観をポスター形式のキャラクターガイドとして構成しました。",
     characterItems: [
       ["MASCOT CHARACTER", "ポケデンのマスコット「パチィちゃん」", "ポケデンの清潔で親しみやすいイメージを伝えられるよう、口腔ケアを象徴するマスコットキャラクターを企画し、ChatGPTとCanva AIを活用して画像を制作しました。", "pokeden-character.png", "ポケデンのマスコットキャラクター、パチィちゃん"],
-      ["WORLD GUIDE", "ポケデン世界観ポスター", "子どもたちがポケデンの機能を簡単かつ興味深く理解できるように、製品の役割を「善」、口腔の問題を「悪」と設定し、ヒーローと悪役が対立する世界観とシナリオを企画しました。 その後、ChatGPTを活用してキャラクターごとの役割と設定を1枚のポスターにまとめました。", "pokeden-world-guide.png", "ポケデンのキャラクター世界観ポスター"],
+      ["WORLD GUIDE", "ポケデン世界観ポスター", "子どもたちがポケデンの機能を簡単かつ興味深く理解できるように、製品の役割を「善」、口腔の問題を「悪」と設定し、ヒーローと悪役が対立する世界観とシナリオを企画しました。その後、ChatGPTを活用してキャラクターごとの役割と設定を1枚のポスターにまとめました。", "pokeden-world-guide.png", "ポケデンのキャラクター世界観ポスター"],
     ],
     resultLabel: "04 · VIDEO OUTPUTS",
     resultTitle: <>制作過程で完成した成果物</>,
@@ -187,7 +189,7 @@ reflection: <>
   },
 } as const;
 
-const videoBase = "/assets/activity/usmedical/videos";
+const videoBase = assetPath("/assets/activity/usmedical/videos");
 const activityKeywords = [
   "JISA × US MEDICAL",
   "PROJECT EXPERIENCE",
@@ -217,10 +219,10 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
     </div>
     <section className="usmHero">
       <div className="usmHeroBackdrop" aria-hidden="true">
-        <img className="usmHeroSlide usmHeroSlideLogo" src="/assets/activity/usmedical/hero-chosun-transparent.png" alt="" />
-        <img className="usmHeroSlide usmHeroSlidePhoto" src="/assets/activity/usmedical/hero-japan-building.jpg" alt="" />
-        <img className="usmHeroSlide usmHeroSlideLogo" src="/assets/activity/usmedical/hero-usmedical.png" alt="" />
-        <img className="usmHeroSlide usmHeroSlideLogo" src="/assets/activity/usmedical/hero-jisa-transparent.png" alt="" />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-chosun-transparent.png")} alt="" width={381} height={349} priority />
+        <Image className="usmHeroSlide usmHeroSlidePhoto" src={assetPath("/assets/activity/usmedical/hero-japan-building.jpg")} alt="" width={1400} height={1584} priority />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-usmedical.png")} alt="" width={2400} height={1510} priority />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority />
       </div>
       <div className="usmHeroCopy">
         <Link className="usmBack" href={activityHref}>← {t.back}</Link>
@@ -241,11 +243,11 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
         <p className="usmSectionLabel">{t.profileLabel}</p>
         <div className="usmProfileGrid">
           <figure className="usmProfilePhoto">
-            <img
-              src="/assets/activity/usmedical/profile.jpg"
+            <Image
+              src={assetPath("/assets/activity/usmedical/profile.jpg")}
               alt={t.profileAlt}
-              width="1128"
-              height="1437"
+              width={1152}
+              height={1481}
             />
           </figure>
           <div className="usmProfileInfo">
@@ -286,7 +288,7 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
           <p>{t.characterText}</p>
         </div>
         <div className="usmCharacterGrid">{t.characterItems.map(([label, title, text, image, alt], index) => <figure className={index === 0 ? "usmCharacterMascot" : "usmCharacterWorld"} key={image}>
-          <div><img src={`/assets/activity/usmedical/${image}`} alt={alt} /></div>
+          <div><Image src={assetPath(`/assets/activity/usmedical/${image}`)} alt={alt} width={index === 0 ? 1024 : 1216} height={index === 0 ? 1024 : 1294} /></div>
           <figcaption><span>{label}</span><h3>{title}</h3><p>{text}</p></figcaption>
         </figure>)}</div>
       </div>

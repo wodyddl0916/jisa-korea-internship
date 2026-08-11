@@ -79,7 +79,7 @@ export function HomeHero({ locale = "ja" }: { locale?: "ja" | "ko" }) {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => setActive((current) => (current + 1) % localizedSlides.length), 6500);
     return () => window.clearInterval(timer);
-  }, [paused]);
+  }, [paused, localizedSlides.length]);
 
   const select = (index: number) => setActive((index + localizedSlides.length) % localizedSlides.length);
 

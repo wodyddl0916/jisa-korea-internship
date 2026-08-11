@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero, SectionHeading } from "../../site-chrome";
 import { briefingUniversities, pastUniversities, resources, stats, videos } from "../../site-data";
 import { StatBand } from "../../stat-band";
+import { assetPath } from "../../base-path";
 
 export const metadata: Metadata = { title: "実績・資料" };
 
@@ -12,7 +14,7 @@ export default function ResultsPage() {
     <section className="section"><div className="wrap fieldShowcase">
       <SectionHeading label="INTERNSHIP SCENES" title="実習の現場を、写真でご紹介します。" text="日本企業の職場で、参加者が実務やチームでの仕事に取り組む様子です。" />
       <figure className="fieldPhoto">
-        <img src="/assets/internship-workplace-collage.jpg" alt="日本企業でのインターンシップ実習風景" width="1448" height="1086" />
+        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="日本企業でのインターンシップ実習風景" width={1448} height={1086} />
         <figcaption>WORKPLACE / TEAM / SOFTWARE</figcaption>
       </figure>
     </div></section>

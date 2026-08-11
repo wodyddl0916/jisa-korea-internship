@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useCallback, useEffect, useRef } from "react";
 import { navigation } from "./site-data";
 import { pageImages } from "./site-images";
+import { assetPath } from "./base-path";
 
 const koreanNavigation: Record<string, string> = {
   "/": "홈",
@@ -38,7 +40,7 @@ export function Header() {
     <header className="siteHeader" ref={headerRef}>
       <div className="headerInner">
         <Link className="brand" href={isKo ? "/ko" : "/"} aria-label={isKo ? "JISA 한일 인턴십 홈" : "JISA韓国インターンシップ ホーム"}>
-          <img src="/assets/jisa-logo.png" alt="JISA" />
+          <Image src={assetPath("/assets/jisa-logo.png")} alt="JISA" width={1568} height={851} priority />
           <span>
             <strong>{isKo ? "한일 인턴십 지원" : "日韓インターンシップ支援"}</strong>
             <small>Japan Internship Support Association</small>

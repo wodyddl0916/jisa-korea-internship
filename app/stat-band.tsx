@@ -2,6 +2,7 @@
 
 import { useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import { networkFlags, type Stat } from "./network-flags";
+import { assetPath } from "./base-path";
 
 export type { Stat };
 
@@ -82,7 +83,7 @@ export function StatBand({ stats, label }: { stats: readonly Stat[]; label?: str
               <img
                 key={code}
                 className="flagChip"
-                src={`/assets/flags/${code}.svg`}
+                src={assetPath(`/assets/flags/${code}.svg`)}
                 alt=""
                 width={200}
                 height={150}

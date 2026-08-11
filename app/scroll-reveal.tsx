@@ -103,7 +103,7 @@ export function ScrollReveal() {
     if (!reduced) document.documentElement.setAttribute("data-reveal-ready", "");
 
     let observer: IntersectionObserver | undefined;
-    let revealFallback: ReturnType<typeof window.setTimeout> | undefined;
+    let revealFallback: number | undefined;
     let fallbackFrame: number | undefined;
     const revealVisibleTargets = () => {
       const revealLine = window.innerHeight * 0.94;

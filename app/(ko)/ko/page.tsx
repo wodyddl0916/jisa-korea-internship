@@ -5,8 +5,13 @@ import { statsKo, videosKo } from "../../site-data-ko";
 import { SectionMedia } from "../../section-media";
 import { StatBand } from "../../stat-band";
 import { VideoBlock } from "../../video-block";
+import { USMedicalActivity } from "../../usmedical-activity";
 
 export default function KoreanHome() {
+  if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
+    return <USMedicalActivity locale="ko" />;
+  }
+
   return <>
     <HomeHero locale="ko" />
     <StatBand stats={statsKo} label="JISA 주요 실적" />

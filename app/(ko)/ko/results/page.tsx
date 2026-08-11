@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero, SectionHeading } from "../../../site-chrome";
 import { briefingUniversitiesKo, pastUniversitiesKo, resourcesKo, statsKo, videosKo } from "../../../site-data-ko";
 import { StatBand } from "../../../stat-band";
+import { assetPath } from "../../../base-path";
 
 export const metadata: Metadata = { title: "실적·자료" };
 
@@ -12,7 +14,7 @@ export default function KoreanResultsPage() {
     <section className="section"><div className="wrap fieldShowcase">
       <SectionHeading label="INTERNSHIP SCENES" title="실습 현장을 사진으로 소개합니다." text="일본 기업의 현장에서 참가자들이 실무와 팀 업무에 참여하는 모습입니다." />
       <figure className="fieldPhoto">
-        <img src="/assets/internship-workplace-collage.jpg" alt="일본 기업에서 진행된 인턴십 실습 현장" width="1448" height="1086" />
+        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="일본 기업에서 진행된 인턴십 실습 현장" width={1448} height={1086} />
         <figcaption>WORKPLACE / TEAM / SOFTWARE</figcaption>
       </figure>
     </div></section>
