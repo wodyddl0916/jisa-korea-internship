@@ -25,6 +25,21 @@ const REVEAL_SELECTOR = [
   ".operationPanel",
   ".activityPanel",
   ".companyCard",
+  ".usmHeroCopy",
+  ".usmSectionLabel",
+  ".usmProfilePhoto",
+  ".usmProfileInfo > *",
+  ".usmOverview > *",
+  ".usmRoleGrid article",
+  ".usmSectionDark > h2",
+  ".usmTimeline article",
+  ".usmCharacterHeading > *",
+  ".usmCharacterGrid figure",
+  ".usmVideoHeading > *",
+  ".usmVideoGrid article",
+  ".usmLearning .usmSplit > *",
+  ".usmLearning blockquote",
+  ".usmStudentNote",
   ".contactCard",
   ".contactDetail",
   ".stat",
@@ -57,17 +72,21 @@ export function ScrollReveal() {
 
   useEffect(() => {
     const reduced = prefersReducedMotion();
-    const reveal = (element: Element) => element.classList.add("is-revealed");
-
-    // Only hide the initial state once this component is running. Without the
-    // flag a JS failure would leave every section stuck at opacity 0.
-    if (!reduced) document.documentElement.setAttribute("data-reveal-ready", "");
-
     const targets = Array.from(document.querySelectorAll(REVEAL_SELECTOR));
     const indexByParent = new Map<Element, number>();
 
+    const reveal = (element: Element) => {
+      element.classList.add("is-revealed");
+      element.classList.remove("revealPending");
+    };
+
     for (const target of targets) {
-      if (target.classList.contains("is-revealed")) continue;
+      target.classList.add("revealTarget");
+
+      if (!reduced && !target.classList.contains("is-revealed")) {
+        target.classList.add("revealPending");
+      }
+
       const parent = target.parentElement;
       if (parent) {
         // Stagger siblings within their own group, so a three-card grid runs
@@ -78,7 +97,29 @@ export function ScrollReveal() {
       }
     }
 
+    // Turn on the hidden state only after every target has been registered.
+    // This prevents a route change or Fast Refresh from hiding content that
+    // the observer never received.
+    if (!reduced) document.documentElement.setAttribute("data-reveal-ready", "");
+
     let observer: IntersectionObserver | undefined;
+    let revealFallback: ReturnType<typeof window.setTimeout> | undefined;
+    let fallbackFrame: number | undefined;
+    const revealVisibleTargets = () => {
+      const revealLine = window.innerHeight * 0.94;
+      for (const target of targets) {
+        if (target.classList.contains("is-revealed")) continue;
+        const rect = target.getBoundingClientRect();
+        if (rect.top <= revealLine && rect.bottom >= 0) reveal(target);
+      }
+    };
+    const scheduleRevealFallback = () => {
+      if (fallbackFrame !== undefined) return;
+      fallbackFrame = window.requestAnimationFrame(() => {
+        fallbackFrame = undefined;
+        revealVisibleTargets();
+      });
+    };
 
     if (reduced || typeof IntersectionObserver === "undefined") {
       targets.forEach(reveal);
@@ -94,6 +135,13 @@ export function ScrollReveal() {
         { rootMargin: "0px 0px -12% 0px", threshold: 0.05 },
       );
       for (const target of targets) observer.observe(target);
+
+      // IntersectionObserver can occasionally miss entries during Fast
+      // Refresh or route transitions. A lightweight viewport check backs it up
+      // while preserving the reveal animation for sections farther down.
+      window.addEventListener("scroll", scheduleRevealFallback, { passive: true });
+      window.addEventListener("resize", scheduleRevealFallback);
+      revealFallback = window.setTimeout(scheduleRevealFallback, 300);
     }
 
     // Counters animate from zero, but the server already rendered the final
@@ -128,6 +176,14 @@ export function ScrollReveal() {
 
     return () => {
       observer?.disconnect();
+      if (revealFallback !== undefined) window.clearTimeout(revealFallback);
+      if (fallbackFrame !== undefined) window.cancelAnimationFrame(fallbackFrame);
+      window.removeEventListener("scroll", scheduleRevealFallback);
+      window.removeEventListener("resize", scheduleRevealFallback);
+      document.documentElement.removeAttribute("data-reveal-ready");
+      for (const target of targets) {
+        target.classList.remove("is-revealed", "revealPending", "revealTarget");
+      }
       for (const frame of frames) cancelAnimationFrame(frame);
       for (const [counter, text] of finalText) counter.textContent = text;
     };

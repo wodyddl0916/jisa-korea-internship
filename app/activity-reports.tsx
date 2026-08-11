@@ -64,17 +64,18 @@ export function ActivityReports({ locale }: ActivityReportsProps) {
 
   return <>
     <div className="companyGrid">
-      {companies.map((company) => (
-        <button
-          className="companyCard"
-          key={company.id}
-          type="button"
-          onClick={() => setIndex(entries.findIndex((entry) => entry.student.id === company.students[0].id))}
-        >
+      {companies.map((company) => {
+        const firstReport = entries.findIndex((entry) => entry.student.id === company.students[0].id);
+
+        return <article className="companyCard" key={company.id}>
           <strong>{company.name}</strong>
-          <span>{copy.open}<b aria-hidden="true">→</b></span>
-        </button>
-      ))}
+          <div className="companyCardActions">
+            <button className="companyReportButton" type="button" onClick={() => setIndex(firstReport)}>
+              <span>{copy.open}</span><b aria-hidden="true">→</b>
+            </button>
+          </div>
+        </article>;
+      })}
     </div>
     <dialog
       className="reportDialog"
