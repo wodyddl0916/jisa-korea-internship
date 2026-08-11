@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "문의" };
 export default function KoreanContactPage() {
   const mailto = (subject: string) => `mailto:tsuka@jisa1234.jp?subject=${encodeURIComponent(subject)}`;
   return <>
-    <PageHero index="06" label="CONTACT" title="기관의 입장과 목적에 맞춰 상담해 드립니다." intro="대학과의 신규 협력, 일본 기업의 인턴 수용, 프로그램 참가, 설명회와 자료 요청을 각 상황에 맞게 안내합니다." />
+    <PageHero index="07" label="CONTACT" title="기관의 입장과 목적에 맞춰 상담해 드립니다." intro="대학과의 신규 협력, 일본 기업의 인턴 수용, 프로그램 참가, 설명회와 자료 요청을 각 상황에 맞게 안내합니다." />
     <section className="section"><div className="wrap"><SectionHeading label="CONTACT BY PURPOSE" title="문의 목적을 선택해 주세요." /><div className="contactChoice">
       <article className="contactCard"><b>01</b><h2>대학·교육기관</h2><p>단기 프로그램, 학점 인정, 공공 지원, 학부·사업단 단위 운영에 관해 상담합니다.</p><a className="button" href={mailto("한국 대학·교육기관 상담")}>대학 상담 신청 <span>→</span></a></article>
       <article className="contactCard"><b>02</b><h2>수용을 검토하는 일본 기업</h2><p>수용 조건, 지원자, 커리큘럼, 체류 자격, 인턴십에서 채용으로 이어지는 설계를 상담합니다.</p><a className="button" href={mailto("일본 수용 기업 상담")}>기업 상담 신청 <span>→</span></a></article>

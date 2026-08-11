@@ -6,6 +6,7 @@ export const navigation = [
   { href: "/programs", label: "3つのプログラム" },
   { href: "/partnership", label: "公的連携" },
   { href: "/results", label: "実績・資料" },
+  { href: "/activity", label: "学生活動記録" },
   { href: "/future", label: "今後の展開" },
 ];
 

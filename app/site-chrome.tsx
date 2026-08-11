@@ -13,6 +13,7 @@ const koreanNavigation: Record<string, string> = {
   "/programs": "3개 프로그램",
   "/partnership": "공공 협력",
   "/results": "실적·자료",
+  "/activity": "학생 활동 기록",
   "/future": "향후 계획",
 };
 
@@ -135,6 +136,7 @@ export function PageHero({ label, title, intro, index, image = "" }: { label: st
     "PROGRAMS": "学生の実習・企業訪問・研修風景",
     "PUBLIC PARTNERSHIP": "HRD Korea・大学との協約・説明会",
     "RESULTS & RESOURCES": "参加学生・大学交流・成果発表の様子",
+    "STUDENT ACTIVITY": "事前学習・企業実習・振り返りの記録写真",
     "VISION 2026–2027": "日韓の学生と企業をつなぐ活動風景",
     "CONTACT": "JISAオフィス・相談対応の様子",
   };
@@ -143,6 +145,7 @@ export function PageHero({ label, title, intro, index, image = "" }: { label: st
     "PROGRAMS": "학생 실습·기업 방문·연수 현장",
     "PUBLIC PARTNERSHIP": "HRD Korea·대학과의 협약식 또는 설명회",
     "RESULTS & RESOURCES": "참가 학생·대학 교류·성과 발표 현장",
+    "STUDENT ACTIVITY": "사전 학습·기업 실습·회고 기록 사진",
     "VISION 2026–2027": "한국 학생과 일본 기업을 연결하는 활동 현장",
     "CONTACT": "JISA 사무실 또는 상담 진행 모습",
   };

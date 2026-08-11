@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "お問い合わせ" };
 export default function ContactPage() {
   const mailto = (subject: string) => `mailto:tsuka@jisa1234.jp?subject=${encodeURIComponent(subject)}`;
   return <>
-    <PageHero index="06" label="CONTACT" title="立場と目的に合わせて、ご相談ください。" intro="大学との新規提携、日本企業の受入れ、プログラム参加、説明会・資料請求について、それぞれの状況からご案内します。" />
+    <PageHero index="07" label="CONTACT" title="立場と目的に合わせて、ご相談ください。" intro="大学との新規提携、日本企業の受入れ、プログラム参加、説明会・資料請求について、それぞれの状況からご案内します。" />
     <section className="section"><div className="wrap"><SectionHeading label="CONTACT BY PURPOSE" title="お問い合わせ内容をお選びください。" />
       <div className="contactChoice">
         <article className="contactCard"><b>01</b><h2>大学・教育機関</h2><p>短期プログラム、単位認定、公的支援、学部・事業団単位での実施について。</p><a className="button" href={mailto("大学・教育機関からの相談")}>大学として相談する <span>→</span></a></article>

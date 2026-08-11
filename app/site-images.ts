@@ -42,6 +42,7 @@ export const pageImages: Record<string, SiteImage> = {
   "PROGRAMS": { src: "/assets/software-internship.jpg", focus: "center 48%" },
   "PUBLIC PARTNERSHIP": { src: "/assets/team-meeting.jpg", focus: "center 46%" },
   "RESULTS & RESOURCES": { src: "/assets/global-network.jpg" },
+  "STUDENT ACTIVITY": { src: "/assets/japanese-training.jpg", focus: "center 45%" },
   "VISION 2026–2027": { src: "/assets/tokyo-tower.jpg", focus: "center" },
   "CONTACT": { src: "/assets/workplace-mentoring.jpg", focus: "center 42%" },
 };
