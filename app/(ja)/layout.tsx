@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { ScrollReveal } from "../scroll-reveal";
-import { Footer, Header, RouteTransition } from "../site-chrome";
-import { assetPath } from "../base-path";
 
 export const metadata: Metadata = {
-  title: {
-    default: "JISA | 日韓インターンシップ支援",
-    template: "%s | JISA日韓インターンシップ",
-  },
-  description: "韓国の大学・学生と日本企業を結ぶ、教育を目的としたJISAのインターンシップ支援サイトです。",
-  icons: {
-    icon: assetPath("/assets/jisa-logo.png"),
-  },
+  title: "US Medical インターンシップ活動記録",
+  description: "US Medicalで担当したポケデンPRコンテンツの企画・制作・編集に関する活動記録です。",
 };
 
 export default function JapaneseRootLayout({
@@ -23,9 +15,7 @@ export default function JapaneseRootLayout({
   return (
     <html lang="ja">
       <body>
-        <Header />
-        <main><RouteTransition>{children}</RouteTransition></main>
-        <Footer />
+        <main>{children}</main>
         <ScrollReveal />
       </body>
     </html>

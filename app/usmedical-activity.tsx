@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { assetPath } from "./base-path";
@@ -7,7 +6,6 @@ type Locale = "ja" | "ko";
 
 const copy = {
   ko: {
-    back: "학생 활동 기록으로 돌아가기",
     label: "US MEDICAL · STUDENT ACTIVITY",
     title: <>조선대학교 × US Medical <br />실습 활동 기록</>,
     intro: "JISA 한일 인턴십 과정에서 US Medical에 파견되어 실습에 참여한 학생의 활동 기록을 정리했습니다.",
@@ -98,7 +96,6 @@ reflection: <>
     note: "본 페이지는 학생 개인이 담당한 영상 제작 업무를 중심으로 정리한 활동 기록입니다.",
   },
   ja: {
-    back: "学生活動記録に戻る",
     label: "US MEDICAL · STUDENT ACTIVITY",
     title: <>朝鮮大学 × US Medical <br />実習活動記録</>,
     intro: "JISA日韓インターンシッププログラムでUS Medicalに派遣され、実習に参加した学生の活動記録をまとめました。",
@@ -200,7 +197,6 @@ const activityKeywords = [
 
 export function USMedicalActivity({ locale }: { locale: Locale }) {
   const t = copy[locale];
-  const activityHref = locale === "ko" ? "/ko/activity" : "/activity";
 
   return <article className={`usmArchive usmStudentArchive usmLocale-${locale}`}>
     <div className="usmStarfall" aria-hidden="true">
@@ -225,7 +221,6 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
         <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority unoptimized />
       </div>
       <div className="usmHeroCopy">
-        <Link className="usmBack" href={activityHref}>← {t.back}</Link>
         <p className="usmKicker">{t.label}</p>
         <h1>{t.title}</h1>
         <p>{t.intro}</p>

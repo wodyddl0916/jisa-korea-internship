@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { ScrollReveal } from "../scroll-reveal";
-import { Footer, Header, RouteTransition } from "../site-chrome";
-import { assetPath } from "../base-path";
 
 export const metadata: Metadata = {
-  title: {
-    default: "JISA | 한일 인턴십 지원",
-    template: "%s | JISA 한일 인턴십",
-  },
-  description: "한국 대학·학생과 일본 기업을 연결하는 교육 목적의 JISA 인턴십 지원 사이트입니다.",
-  icons: {
-    icon: assetPath("/assets/jisa-logo.png"),
-  },
+  title: "US Medical 인턴십 활동 기록",
+  description: "US Medical에서 담당한 포케덴 홍보 콘텐츠의 기획, 제작, 편집 활동 기록입니다.",
 };
 
 export default function KoreanRootLayout({
@@ -23,9 +15,7 @@ export default function KoreanRootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main><RouteTransition>{children}</RouteTransition></main>
-        <Footer />
+        <main>{children}</main>
         <ScrollReveal />
       </body>
     </html>
