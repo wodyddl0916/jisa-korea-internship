@@ -14,7 +14,7 @@ export default function KoreanResultsPage() {
     <section className="section"><div className="wrap fieldShowcase">
       <SectionHeading label="INTERNSHIP SCENES" title="실습 현장을 사진으로 소개합니다." text="일본 기업의 현장에서 참가자들이 실무와 팀 업무에 참여하는 모습입니다." />
       <figure className="fieldPhoto">
-        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="일본 기업에서 진행된 인턴십 실습 현장" width={1448} height={1086} />
+        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="일본 기업에서 진행된 인턴십 실습 현장" width={1448} height={1086} unoptimized />
         <figcaption>WORKPLACE / TEAM / SOFTWARE</figcaption>
       </figure>
     </div></section>

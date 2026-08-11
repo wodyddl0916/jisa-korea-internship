@@ -219,10 +219,10 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
     </div>
     <section className="usmHero">
       <div className="usmHeroBackdrop" aria-hidden="true">
-        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-chosun-transparent.png")} alt="" width={381} height={349} priority />
-        <Image className="usmHeroSlide usmHeroSlidePhoto" src={assetPath("/assets/activity/usmedical/hero-japan-building.jpg")} alt="" width={1400} height={1584} priority />
-        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-usmedical.png")} alt="" width={2400} height={1510} priority />
-        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-chosun-transparent.png")} alt="" width={381} height={349} priority unoptimized />
+        <Image className="usmHeroSlide usmHeroSlidePhoto" src={assetPath("/assets/activity/usmedical/hero-japan-building.jpg")} alt="" width={1400} height={1584} priority unoptimized />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-usmedical.png")} alt="" width={2400} height={1510} priority unoptimized />
+        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority unoptimized />
       </div>
       <div className="usmHeroCopy">
         <Link className="usmBack" href={activityHref}>← {t.back}</Link>
@@ -248,6 +248,7 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
               alt={t.profileAlt}
               width={1152}
               height={1481}
+              unoptimized
             />
           </figure>
           <div className="usmProfileInfo">
@@ -288,7 +289,7 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
           <p>{t.characterText}</p>
         </div>
         <div className="usmCharacterGrid">{t.characterItems.map(([label, title, text, image, alt], index) => <figure className={index === 0 ? "usmCharacterMascot" : "usmCharacterWorld"} key={image}>
-          <div><Image src={assetPath(`/assets/activity/usmedical/${image}`)} alt={alt} width={index === 0 ? 1024 : 1216} height={index === 0 ? 1024 : 1294} /></div>
+          <div><Image src={assetPath(`/assets/activity/usmedical/${image}`)} alt={alt} width={index === 0 ? 1024 : 1216} height={index === 0 ? 1024 : 1294} unoptimized /></div>
           <figcaption><span>{label}</span><h3>{title}</h3><p>{text}</p></figcaption>
         </figure>)}</div>
       </div>

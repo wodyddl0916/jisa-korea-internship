@@ -40,7 +40,7 @@ export function Header() {
     <header className="siteHeader" ref={headerRef}>
       <div className="headerInner">
         <Link className="brand" href={isKo ? "/ko" : "/"} aria-label={isKo ? "JISA 한일 인턴십 홈" : "JISA韓国インターンシップ ホーム"}>
-          <Image src={assetPath("/assets/jisa-logo.png")} alt="JISA" width={1568} height={851} priority />
+          <Image src={assetPath("/assets/jisa-logo.png")} alt="JISA" width={1568} height={851} priority unoptimized />
           <span>
             <strong>{isKo ? "한일 인턴십 지원" : "日韓インターンシップ支援"}</strong>
             <small>Japan Internship Support Association</small>

@@ -14,7 +14,7 @@ export default function ResultsPage() {
     <section className="section"><div className="wrap fieldShowcase">
       <SectionHeading label="INTERNSHIP SCENES" title="実習の現場を、写真でご紹介します。" text="日本企業の職場で、参加者が実務やチームでの仕事に取り組む様子です。" />
       <figure className="fieldPhoto">
-        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="日本企業でのインターンシップ実習風景" width={1448} height={1086} />
+        <Image src={assetPath("/assets/internship-workplace-collage.jpg")} alt="日本企業でのインターンシップ実習風景" width={1448} height={1086} unoptimized />
         <figcaption>WORKPLACE / TEAM / SOFTWARE</figcaption>
       </figure>
     </div></section>
