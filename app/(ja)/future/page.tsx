@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "今後の展開" };
 
 export default function FuturePage() {
   return <>
-    <PageHero index="05" label="VISION 2026–2027" title="韓国での事業基盤を強化し、学びから就職まで支える。" intro="HRD Koreaとの連携を軸に、韓国現地体制、大学・企業ネットワーク、就職者向けカリキュラム事業を段階的に拡大します。" />
+    <PageHero index="06" label="VISION 2026–2027" title="韓国での事業基盤を強化し、学びから就職まで支える。" intro="HRD Koreaとの連携を軸に、韓国現地体制、大学・企業ネットワーク、就職者向けカリキュラム事業を段階的に拡大します。" />
     <section className="section"><div className="wrap"><SectionHeading label="TARGET" title="2027年度、年間100名規模へ。" text="制度普及とネットワーク拡大を進め、将来的には年間500名までを視野に入れた体制を目指します。" />
       <div className="roadmap">
         <article className="goalPanel"><span className="big">100名</span><h2>2027年度の年間目標</h2><p>韓国大学と日本企業の参加機会を増やし、教育品質を保ちながら年間100名規模の受入・採用支援を目指します。</p><div className="tagRow"><span className="tag">将来目標 500名</span><span className="tag">大学・企業網拡大</span></div></article>

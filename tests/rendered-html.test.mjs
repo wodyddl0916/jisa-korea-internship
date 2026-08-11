@@ -10,7 +10,7 @@ const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const japaneseRoutes = ["/", "/about", "/programs", "/partnership", "/results", "/future", "/contact"];
+const japaneseRoutes = ["/", "/about", "/programs", "/partnership", "/results", "/activity", "/future", "/contact"];
 const koreanRoutes = japaneseRoutes.map((route) => (route === "/" ? "/ko" : `/ko${route}`));
 
 async function renderHtml(pathname) {
@@ -113,7 +113,7 @@ test("ships the network flags in the served markup, marked decorative", async ()
 });
 
 test("fills every page hero, replacing the placeholder guidance", async () => {
-  for (const route of ["/about", "/programs", "/partnership", "/results", "/future", "/contact"]) {
+  for (const route of ["/about", "/programs", "/partnership", "/results", "/activity", "/future", "/contact"]) {
     const html = await renderHtml(route);
     assert.match(html, /class="[^"]*\bhasImage\b/, `${route} should render a hero image`);
     assert.doesNotMatch(html, /掲載予定写真/, `${route} should not show the placeholder`);

@@ -71,7 +71,8 @@ h1, h2, h3, h4, strong { font-weight: 700; }
 [data-reveal-ready] .benefitItem,
 [data-reveal-ready] .universityGroup,
 [data-reveal-ready] .operationPanel,
-[data-reveal-ready] .activityViewer,
+[data-reveal-ready] .activityPanel,
+[data-reveal-ready] .companyCard,
 [data-reveal-ready] .contactCard,
 [data-reveal-ready] .contactDetail,
 [data-reveal-ready] .stat,
@@ -424,24 +425,50 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
 .operationList li > b { color: var(--sky); font-size: 18px; line-height: 1.45; }
 .operationList span { color: var(--muted); font-size: 13px; }
 .operationList strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 14px; }
-.activityViewer { margin-top: 28px; border: 1px solid #b9d5e5; border-radius: 6px; background: var(--blue-soft); box-shadow: var(--shadow); overflow: hidden; }
-.activityViewer > summary { min-height: 94px; padding: 20px 28px; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; }
-.activityViewer > summary::-webkit-details-marker { display: none; }
-.activityViewer > summary span { display: grid; gap: 2px; }
-.activityViewer > summary small { color: var(--blue); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
-.activityViewer > summary strong { color: var(--blue-deep); font-size: 20px; }
-.activityViewer > summary > b { width: 42px; height: 42px; border: 1px solid #afd0e3; border-radius: 4px; background: white; color: var(--blue); display: grid; place-items: center; font-size: 24px; transition: transform .25s, color .2s, background .2s; }
-.activityViewer > summary:hover > b, .activityViewer > summary:focus-visible > b { color: white; background: var(--blue); }
-.activityViewer[open] > summary > b { transform: rotate(45deg); }
-.activityPanel { padding: 28px; border-top: 1px solid #c4dae7; background: white; }
-.activityIntro { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
-.activityIntro > span { flex: 0 0 auto; padding: 5px 9px; background: var(--blue-deep); color: white; font-size: 10px; font-weight: 800; }
-.activityIntro p { margin: 0; color: var(--muted); font-size: 13px; }
+.activityPanel { margin-top: 28px; padding: 28px; border: 1px solid #b9d5e5; border-radius: 6px; background: white; box-shadow: var(--shadow); }
 .activityStageGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .activityStageGrid article { min-height: 142px; padding: 20px; border: 1px solid var(--line); border-radius: 5px; background: var(--soft); }
 .activityStageGrid article > b { color: var(--sky); font-size: 20px; }
 .activityStageGrid h3 { margin: 20px 0 5px; font-size: 15px; }
 .activityStageGrid p { margin: 0; color: var(--muted); font-size: 12px; }
+
+/* Participating companies — each card opens the report modal. */
+.companyGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.companyCard { min-height: 118px; padding: 22px; border: 1px solid var(--line); border-radius: 6px; background: white; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px; text-align: left; cursor: pointer; transition: transform .22s, box-shadow .22s, border-color .22s; }
+.companyCard:hover, .companyCard:focus-visible { transform: translateY(-3px); border-color: #b9d5e5; box-shadow: var(--shadow-raised); }
+.companyCard strong { color: var(--blue-deep); font-size: 17px; line-height: 1.5; }
+.companyCard span { display: flex; align-items: center; gap: 7px; color: var(--blue); font-size: 12px; font-weight: 700; }
+.companyCard b { transition: transform .22s; }
+.companyCard:hover b, .companyCard:focus-visible b { transform: translateX(4px); }
+
+/* Report modal. */
+/* `margin: auto` is what centres a modal dialog, and Tailwind's preflight resets
+   it to 0, so it has to be restored here. */
+.reportDialog { width: min(880px, calc(100% - 32px)); max-height: min(82vh, 760px); margin: auto; padding: 0; border: 0; border-radius: 8px; background: transparent; overflow: visible; }
+.reportDialog::backdrop { background: rgba(20, 45, 68, .58); backdrop-filter: blur(3px); }
+body:has(.reportDialog[open]) { overflow: hidden; }
+.reportShell { position: relative; max-height: min(82vh, 760px); display: flex; flex-direction: column; border-radius: 8px; background: white; box-shadow: var(--shadow-raised); overflow: hidden; }
+.reportHead { flex: 0 0 auto; padding: 26px 66px 20px 32px; border-bottom: 1px solid var(--line); background: var(--blue-soft); }
+.reportHead h3 { margin: 6px 0 4px; color: var(--blue-deep); font-size: 21px; line-height: 1.45; }
+.reportHead h3 i { margin: 0 9px; color: var(--sky); font-style: normal; }
+.reportHead > span { color: var(--muted); font-size: 12px; }
+.reportClose { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border: 1px solid #b9d5e5; border-radius: 4px; background: white; color: var(--blue); display: grid; place-items: center; font-size: 20px; line-height: 1; cursor: pointer; transition: color .2s, background .2s; }
+.reportClose:hover, .reportClose:focus-visible { color: white; background: var(--blue); }
+
+/* Centred on both sides of the panel, floating over the report body. */
+.reportArrow { position: absolute; top: 50%; z-index: 2; width: 44px; height: 44px; border: 1px solid #b9d5e5; border-radius: 50%; background: rgba(255, 255, 255, .94); color: var(--blue); display: grid; place-items: center; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: var(--shadow); transform: translateY(-50%); transition: color .2s, background .2s; }
+.reportArrow:hover, .reportArrow:focus-visible { color: white; background: var(--blue); }
+.reportPrev { left: 12px; }
+.reportNext { right: 12px; }
+
+/* The report itself scrolls; the scrollbar is hidden so the panel stays clean. */
+.reportBody { flex: 1 1 auto; padding: 28px 68px 34px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; -ms-overflow-style: none; }
+.reportBody::-webkit-scrollbar { width: 0; height: 0; }
+.reportBody:focus-visible { outline-offset: -4px; }
+.reportBody section + section { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line); }
+.reportBody h4 { margin: 0 0 10px; color: var(--blue-deep); font-size: 15px; }
+.reportBody p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.reportBody p:last-child { margin-bottom: 0; }
 .videoGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .videoCard { min-height: 165px; padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 6px; background: white; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s; }
 .videoCard:hover { transform: translateY(-4px); border-top-color: var(--sky); box-shadow: var(--shadow); }
@@ -530,6 +557,7 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .flow { grid-template-columns: repeat(3, 1fr); }
   .pageHeroInner { grid-template-columns: minmax(0, 1fr) 320px; gap: 38px; }
   .videoGrid { grid-template-columns: repeat(2, 1fr); }
+  .companyGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -584,11 +612,20 @@ a.videoPlay { min-height: 120px; padding: 22px; border: 1px solid var(--line); b
   .flow { grid-template-columns: 1fr; }
   .flowStep { min-height: auto; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .nameList li { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .activityViewer > summary { min-height: 78px; padding: 16px 18px; }
-  .activityViewer > summary strong { font-size: 16px; }
   .activityPanel { padding: 20px; }
   .activityIntro { align-items: flex-start; flex-direction: column; gap: 9px; }
   .activityStageGrid { grid-template-columns: 1fr; }
+  .companyGrid { grid-template-columns: 1fr; }
+  .companyCard { min-height: auto; padding: 18px; }
+  /* Too narrow to float the arrows over the text, so they sit below the report. */
+  .reportShell { max-height: 88vh; }
+  .reportHead { padding: 20px 58px 16px 20px; }
+  .reportHead h3 { font-size: 17px; }
+  .reportClose { top: 15px; right: 15px; }
+  .reportBody { padding: 22px 20px 72px; }
+  .reportArrow { top: auto; bottom: 14px; width: 40px; height: 40px; font-size: 23px; transform: none; }
+  .reportPrev { left: 14px; }
+  .reportNext { right: 14px; }
   .videoGrid { grid-template-columns: 1fr; }
   .videoBlock { grid-template-columns: 1fr; gap: 20px; }
   .contactDetail { border-right: 0; border-bottom: 1px solid var(--line); }
