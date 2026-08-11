@@ -49,6 +49,16 @@ h1, h2, h3, strong { font-weight: 700; }
   [data-reveal-ready] .usmProfilePhoto.revealTarget.is-revealed {
     animation: usmProfileSpinIn 1.18s cubic-bezier(.18, .82, .24, 1) both;
   }
+  [data-reveal-ready] .usmPromoImpact.revealPending .usmPromoCharacter,
+  [data-reveal-ready] .usmPromoImpact.revealPending .usmPromoBubble,
+  [data-reveal-ready] .usmPromoImpact.revealPending .usmPromoBurst {
+    opacity: 0;
+  }
+  [data-reveal-ready] .usmPromoImpact.revealPending .usmPromoCharacter { transform: translateY(110px) scale(.18) rotate(-12deg); }
+  [data-reveal-ready] .usmPromoImpact.is-revealed .usmPromoCharacter { animation: usmPromoCharacterPop .9s cubic-bezier(.12, 1.18, .26, 1) .08s both; }
+  [data-reveal-ready] .usmPromoImpact.is-revealed .usmPromoBurst { animation: usmPromoBurstPop .72s ease-out .32s both; }
+  [data-reveal-ready] .usmPromoImpact.is-revealed .usmPromoBubbleLeft { animation: usmPromoBubblePop .5s cubic-bezier(.18, 1.5, .38, 1) .48s both; }
+  [data-reveal-ready] .usmPromoImpact.is-revealed .usmPromoBubbleRight { animation: usmPromoBubblePop .5s cubic-bezier(.18, 1.5, .38, 1) .64s both; }
 }
 
 @keyframes usmImpactThrow {
@@ -62,6 +72,22 @@ h1, h2, h3, strong { font-weight: 700; }
   44% { opacity: .88; transform: scale(.58) rotate(-540deg); }
   76% { opacity: 1; transform: scale(1.08) rotate(22deg); }
   100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes usmPromoCharacterPop {
+  0% { opacity: 0; transform: translateY(110px) scale(.18) rotate(-12deg); }
+  68% { opacity: 1; transform: translateY(-12px) scale(1.06) rotate(2deg); }
+  84% { transform: translateY(5px) scale(.98) rotate(-1deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes usmPromoBurstPop {
+  0% { opacity: 0; transform: scale(.15) rotate(-25deg); }
+  70% { opacity: 1; transform: scale(1.12) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes usmPromoBubblePop {
+  0% { opacity: 0; transform: scale(.12) rotate(var(--bubble-rotate)); }
+  72% { opacity: 1; transform: scale(1.16) rotate(var(--bubble-rotate)); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--bubble-rotate)); }
 }
 
 .usmArchive {
@@ -145,6 +171,7 @@ h1, h2, h3, strong { font-weight: 700; }
 .usmHeroSlide { --slide-opacity: .58; position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: contain; opacity: 0; mix-blend-mode: multiply; filter: saturate(.92) contrast(1.04); animation: usmHeroBackdropCycle 20s ease-in-out infinite; }
 .usmHeroSlidePhoto { --slide-opacity: .7; object-fit: cover; }
 .usmHeroSlideLogo { padding: 30px 3vw; }
+.usmHeroSlideSmallLogo { inset: 15%; width: 70%; height: 70%; padding: 0; }
 .usmHeroSlide:nth-child(2) { animation-delay: 5s; }
 .usmHeroSlide:nth-child(3) { animation-delay: 10s; }
 .usmHeroSlide:nth-child(4) { animation-delay: 15s; }
@@ -184,7 +211,16 @@ h1, h2, h3, strong { font-weight: 700; }
 
 .usmOverview > div > p { margin: 0 0 34px; color: var(--muted); font-size: 15px; }
 .usmOverview dl div { padding: 13px 0; display: grid; grid-template-columns: 130px 1fr; border-bottom: 1px solid var(--usm-line); font-size: 12px; }
-.usmRoleGrid { margin-top: 88px; display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--usm-line); }
+.usmPromoImpact { position: relative; isolation: isolate; width: min(100%, 720px); height: 360px; margin: 44px auto 18px; display: grid; place-items: center; }
+.usmPromoCharacter { position: relative; z-index: 2; width: auto; height: 340px; filter: drop-shadow(0 18px 20px rgba(23, 78, 120, .18)); }
+.usmPromoBurst { position: absolute; z-index: 0; width: 300px; aspect-ratio: 1; border-radius: 50%; background: repeating-conic-gradient(from 4deg, rgba(87,181,223,.23) 0 7deg, transparent 7deg 17deg); mask-image: radial-gradient(circle, transparent 0 29%, #000 30% 62%, transparent 72%); }
+.usmPromoBubble { position: absolute; z-index: 3; min-width: 126px; padding: 13px 22px 15px; border: 3px solid var(--usm-blue); border-radius: 50%; color: var(--usm-blue); background: white; box-shadow: 7px 8px 0 rgba(87,181,223,.24); text-align: center; font-size: 25px; font-weight: 900; line-height: 1; transform: rotate(var(--bubble-rotate)); }
+.usmPromoBubble::after { content: ""; position: absolute; bottom: -15px; width: 23px; height: 23px; border-right: 3px solid var(--usm-blue); border-bottom: 3px solid var(--usm-blue); background: white; transform: rotate(43deg); }
+.usmPromoBubbleLeft { --bubble-rotate: -9deg; top: 68px; left: 56px; }
+.usmPromoBubbleLeft::after { right: 14px; }
+.usmPromoBubbleRight { --bubble-rotate: 8deg; top: 118px; right: 42px; }
+.usmPromoBubbleRight::after { left: 14px; }
+.usmRoleGrid { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--usm-line); }
 .usmRoleGrid article { min-height: 260px; padding: 28px; border-right: 1px solid var(--usm-line); }
 .usmRoleGrid article:last-child { border-right: 0; }
 .usmRoleGrid article > span { color: var(--usm-sky); font-family: Georgia, serif; }
@@ -256,6 +292,13 @@ h1, h2, h3, strong { font-weight: 700; }
   .usmHeroCopy > p:not(.usmKicker) { font-size: 14px; }
   .usmSection { padding: 82px 0; }
   .usmSectionLabel { margin-bottom: 48px; }
+  .usmPromoImpact { height: 285px; margin-top: 34px; }
+  .usmPromoCharacter { height: 270px; }
+  .usmPromoBurst { width: 230px; }
+  .usmPromoBubble { min-width: 92px; padding: 10px 14px 12px; border-width: 2px; font-size: 19px; }
+  .usmPromoBubble::after { bottom: -11px; width: 17px; height: 17px; border-width: 0 2px 2px 0; }
+  .usmPromoBubbleLeft { top: 46px; left: 0; }
+  .usmPromoBubbleRight { top: 104px; right: 0; }
   .usmArchive .usmProfileInfo h2 { margin-bottom: 44px; }
   .usmProfileInfo dl div { grid-template-columns: 1fr; gap: 4px; }
   .usmTimeline article { grid-template-columns: 1fr; gap: 10px; }

@@ -221,10 +221,10 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
     </div>
     <section className="usmHero">
       <div className="usmHeroBackdrop" aria-hidden="true">
-        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-chosun-transparent.png")} alt="" width={381} height={349} priority unoptimized />
+        <Image className="usmHeroSlide usmHeroSlideLogo usmHeroSlideSmallLogo" src={assetPath("/assets/activity/usmedical/hero-chosun-transparent.png")} alt="" width={381} height={349} priority unoptimized />
         <Image className="usmHeroSlide usmHeroSlidePhoto" src={assetPath("/assets/activity/usmedical/hero-japan-building.jpg")} alt="" width={1400} height={1584} priority unoptimized />
         <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-usmedical.png")} alt="" width={2400} height={1510} priority unoptimized />
-        <Image className="usmHeroSlide usmHeroSlideLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority unoptimized />
+        <Image className="usmHeroSlide usmHeroSlideLogo usmHeroSlideSmallLogo" src={assetPath("/assets/activity/usmedical/hero-jisa-transparent.png")} alt="" width={1568} height={851} priority unoptimized />
       </div>
       <div className="usmHeroCopy">
         <p className="usmKicker">{t.label}</p>
@@ -269,6 +269,19 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
           <dl>{t.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
         </div>
       </div>
+      <div className="usmPromoImpact" aria-hidden="true">
+        <span className="usmPromoBubble usmPromoBubbleLeft">{locale === "ko" ? "홍보!" : "PR!"}</span>
+        <div className="usmPromoBurst"></div>
+        <Image
+          className="usmPromoCharacter"
+          src={assetPath("/assets/activity/usmedical/promotion-character.png")}
+          alt=""
+          width={1024}
+          height={1536}
+          unoptimized
+        />
+        <span className="usmPromoBubble usmPromoBubbleRight">{locale === "ko" ? "홍보!" : "PR!"}</span>
+      </div>
       <div className="usmRoleGrid">{t.duties.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
     </section>
 
@@ -282,22 +295,8 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
       </div>
     </section>
 
-    <section className="usmCharacterShowcase">
-      <div className="usmSection">
-        <p className="usmSectionLabel">{t.characterLabel}</p>
-        <div className="usmSplit usmCharacterHeading">
-          <h2>{t.characterTitle}</h2>
-          <p>{t.characterText}</p>
-        </div>
-        <div className="usmCharacterGrid">{t.characterItems.map(([label, title, text, image, alt], index) => <figure className={index === 0 ? "usmCharacterMascot" : "usmCharacterWorld"} key={image}>
-          <div><Image src={assetPath(`/assets/activity/usmedical/${image}`)} alt={alt} width={index === 0 ? 1024 : 1216} height={index === 0 ? 1024 : 1294} unoptimized /></div>
-          <figcaption><span>{label}</span><h3>{title}</h3><p>{text}</p></figcaption>
-        </figure>)}</div>
-      </div>
-    </section>
-
     <section className="usmSection usmVideoResults">
-      <p className="usmSectionLabel">{t.resultLabel}</p>
+      <p className="usmSectionLabel">{t.resultLabel.replace(/^04/, "03")}</p>
       <div className="usmSplit usmVideoHeading"><h2>{t.resultTitle}</h2><p>{t.resultText}</p></div>
       <div className="usmVideoGrid">{t.videos.map(([number, title, text, video, poster]) => <article key={video}>
         <video
@@ -313,6 +312,20 @@ export function USMedicalActivity({ locale }: { locale: Locale }) {
         </video>
         <div><span>{number}</span><h3>{title}</h3><p>{text}</p></div>
       </article>)}</div>
+    </section>
+
+    <section className="usmCharacterShowcase">
+      <div className="usmSection">
+        <p className="usmSectionLabel">{t.characterLabel.replace(/^03/, "04")}</p>
+        <div className="usmSplit usmCharacterHeading">
+          <h2>{t.characterTitle}</h2>
+          <p>{t.characterText}</p>
+        </div>
+        <div className="usmCharacterGrid">{t.characterItems.map(([label, title, text, image, alt], index) => <figure className={index === 0 ? "usmCharacterMascot" : "usmCharacterWorld"} key={image}>
+          <div><Image src={assetPath(`/assets/activity/usmedical/${image}`)} alt={alt} width={index === 0 ? 1024 : 1216} height={index === 0 ? 1024 : 1294} unoptimized /></div>
+          <figcaption><span>{label}</span><h3>{title}</h3><p>{text}</p></figcaption>
+        </figure>)}</div>
+      </div>
     </section>
 
     <section className="usmSection usmLearning">

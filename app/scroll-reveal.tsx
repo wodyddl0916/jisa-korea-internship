@@ -9,6 +9,7 @@ const REVEAL_SELECTOR = [
   ".usmProfilePhoto",
   ".usmProfileInfo > *",
   ".usmOverview > *",
+  ".usmPromoImpact",
   ".usmRoleGrid article",
   ".usmSectionDark > h2",
   ".usmTimeline article",

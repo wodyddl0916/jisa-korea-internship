@@ -17,6 +17,9 @@
 /.next/
 /.vinext/
 /out/
+/build/
+/worker/
+/.openai/
 
 # misc
 .DS_Store

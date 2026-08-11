@@ -31,6 +31,7 @@ test("keeps every portfolio media asset", async () => {
     "hero-usmedical.png",
     "pokeden-character.png",
     "pokeden-world-guide.png",
+    "promotion-character.png",
     "profile.jpg",
     "videos/pokedenloop.mp4",
     "videos/draft-0803.mp4",
