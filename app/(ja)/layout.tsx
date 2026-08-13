@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
 import "../globals.css";
+import { assetPath } from "../base-path";
 import { ScrollReveal } from "../scroll-reveal";
-
-export const metadata: Metadata = {
-  title: "US Medical インターンシップ活動記録",
-  description: "US Medicalで担当したポケデンPRコンテンツの企画・制作・編集に関する活動記録です。",
-};
 
 export default function JapaneseRootLayout({
   children,
@@ -14,6 +9,9 @@ export default function JapaneseRootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="icon" type="image/svg+xml" href={`${assetPath("/transparent-favicon.svg")}?v=2`} />
+      </head>
       <body>
         <main>{children}</main>
         <ScrollReveal />

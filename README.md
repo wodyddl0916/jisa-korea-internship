@@ -1,6 +1,6 @@
 # US Medical 인턴십 활동 기록
 
-JISA 한일 인턴십을 통해 US Medical에서 수행한 포케덴 홍보 콘텐츠 제작 활동을 정리한 독립 포트폴리오입니다.
+JISA 한일 인턴십을 통해 경험한 US Medical 실무와 약 9주간의 일본 생활을 한국어·일본어로 정리한 포트폴리오 상세 자료입니다.
 
 ## 공개 페이지
 
@@ -18,10 +18,11 @@ npm run dev
 
 ## 주요 수정 위치
 
-- `app/usmedical-activity.tsx`: 한국어·일본어 문구와 페이지 구성
+- `app/usmedical-activity.tsx`: 한국어·일본어 콘텐츠와 섹션 구성
+- `app/life-photo-carousel.tsx`: 일본 생활 사진 캐러셀
 - `app/globals.css`: 디자인과 애니메이션
 - `public/assets/activity/usmedical/`: 프로필, 로고, 캐릭터, 포스터, 영상
-- `app/(ja)/page.tsx`: 일본어 첫 화면
-- `app/(ko)/ko/page.tsx`: 한국어 첫 화면
+- `app/(ja)/page.tsx`: 일본어 상세 페이지
+- `app/(ko)/ko/page.tsx`: 한국어 상세 페이지
 
 `main` 브랜치에 변경 사항을 올리면 GitHub Actions가 자동으로 GitHub Pages에 배포합니다.

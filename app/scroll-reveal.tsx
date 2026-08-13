@@ -17,6 +17,8 @@ const REVEAL_SELECTOR = [
   ".usmCharacterGrid figure",
   ".usmVideoHeading > *",
   ".usmVideoGrid article",
+  ".usmCalendarHeading > *",
+  ".usmCalendarGrid article",
   ".usmLearning .usmSplit > *",
   ".usmLearning blockquote",
   ".usmStudentNote",
