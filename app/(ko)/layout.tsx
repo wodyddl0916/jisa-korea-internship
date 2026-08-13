@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
 import "../globals.css";
+import { assetPath } from "../base-path";
 import { ScrollReveal } from "../scroll-reveal";
-
-export const metadata: Metadata = {
-  title: "US Medical 인턴십 활동 기록",
-  description: "US Medical에서 담당한 포케덴 홍보 콘텐츠의 기획, 제작, 편집 활동 기록입니다.",
-};
 
 export default function KoreanRootLayout({
   children,
@@ -14,6 +9,9 @@ export default function KoreanRootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="icon" type="image/svg+xml" href={`${assetPath("/transparent-favicon.svg")}?v=2`} />
+      </head>
       <body>
         <main>{children}</main>
         <ScrollReveal />
